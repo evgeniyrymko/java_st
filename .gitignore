@@ -14,3 +14,6 @@ JavaRushTasks/JavaRushTasks/Instruction.png
 JavaRushTasks/JavaRushTasks/JavaRushPlugin.properties
 JavaRushTasks/JavaRushTasks/JavaRushTasks.iml
 JavaRushTasks/JavaRushTasks/out.log
+
+*.iml
+*.info
