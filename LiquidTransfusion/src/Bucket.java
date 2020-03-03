@@ -15,20 +15,6 @@ public class Bucket {
         return currentVolume;
     }
 
-    public boolean isEmpty() {
-        if (this.currentVolume == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isFilled() {
-        if (this.currentVolume == this.capacity) {
-            return true;
-        }
-        return false;
-    }
-
     public void transfuse(Bucket bucket, int volume) {
         this.currentVolume -= volume;
         bucket.currentVolume += volume;

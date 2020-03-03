@@ -18,10 +18,37 @@ public class Main {
             System.out.println("Валидация не пройдена, т.к. требуемый объем не кратен НОД вместимостей ведер");
         } else {
             solutionSmallToBig(bucket1, bucket2, volume);
+            bucket1.makeEmpty();
+            bucket2.makeEmpty();
+            solutionBigToSmall(bucket1, bucket2, volume);
         }
     }
 
+    private static void solutionBigToSmall(Bucket bucket1, Bucket bucket2, int volume) {
+        System.out.println("Способ 2");
+        int count = 0;
+        System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
+        while (!checkResult(bucket1, bucket2, volume)) {
+
+            bucket2.makeFilled();
+            System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
+            do {
+                bucket2.transfuse(bucket1, bucket1.getCapacity() - bucket1.getCurrentVolume());
+                System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
+                if (checkResult(bucket1, bucket2, volume)) break;
+                bucket1.makeEmpty();
+                System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
+            } while (bucket2.getCurrentVolume() >= bucket1.getCapacity() && !checkResult(bucket1, bucket2, volume));
+            if (bucket2.getCurrentVolume() > 0 && !checkResult(bucket1, bucket2, volume)) {
+                bucket2.transfuse(bucket1, bucket2.getCurrentVolume());
+                System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
+            }
+        }
+        System.out.println("-----");
+    }
+
     public static void solutionSmallToBig(Bucket bucket1, Bucket bucket2, int volume) {
+        System.out.println("Способ 1");
         int count = 0;
         System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
         while (!checkResult(bucket1, bucket2, volume)) {
@@ -46,6 +73,7 @@ public class Main {
                 System.out.println("(" + count++ + ") " + bucketsState(bucket1, bucket2));
             }
         }
+        System.out.println("-----");
     }
 
     public static String bucketsState(Bucket bucket1, Bucket bucket2) {
