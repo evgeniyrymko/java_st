@@ -17,3 +17,7 @@ JavaRushTasks/JavaRushTasks/out.log
 
 *.iml
 *.info
+
+LiquidTransfusion/.idea/
+LiquidTransfusion/out/
+LiquidTransfusion/JavaCore.iml
