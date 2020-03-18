@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<books>
+    <book id="03" isdn="221122">
+        <title>Title</title>
+        <author>Andrew</author>
+    </book>
+</books>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for profile-example" enabled="true">
+        <sourceOutputDir name="profile1-output/generated-sources/annotations" />
+        <sourceTestOutputDir name="profile1-output/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="profile-example" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

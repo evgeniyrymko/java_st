@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Samples8JSFGlassFish:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Samples8JSFGlassFish_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Samples8JSFGlassFish/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Samples8JSFGlassFish" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

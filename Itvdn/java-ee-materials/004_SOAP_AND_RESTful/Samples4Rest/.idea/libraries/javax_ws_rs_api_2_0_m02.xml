@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javax.ws.rs-api-2.0-m02">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../javax.ws.rs-api-2.0-m02.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jersey-container-servlet-core-2.26.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
