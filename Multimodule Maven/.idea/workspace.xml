@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92c38639-f615-465d-992d-f40445f74f58" name="Default Changelist" comment="" />
+    <list default="true" id="92c38639-f615-465d-992d-f40445f74f58" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/child-maven/src/test/java/SimpleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/child-maven/src/test/java/SimpleTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +21,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
@@ -33,6 +41,7 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectId" id="1Z4oIHrUeJmx9JuwXrMFopzNIPD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -40,12 +49,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="keyPromoterConfiguration" />
   </component>
   <component name="RunManager">
     <configuration name="SimpleTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -80,6 +91,8 @@
       <workItem from="1584367126360" duration="1071000" />
       <workItem from="1584426014349" duration="2216000" />
       <workItem from="1584433277681" duration="573000" />
+      <workItem from="1585310859072" duration="497000" />
+      <workItem from="1585547719560" duration="4000" />
     </task>
     <servers />
   </component>
@@ -91,30 +104,37 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="555" y="180" width="800" height="672" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1584363081444" />
-    <state width="1878" height="269" key="GridCell.Tab.0.bottom" timestamp="1584371180578">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="287" key="GridCell.Tab.0.bottom" timestamp="1585311356032">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584371180578" />
-    <state width="1878" height="269" key="GridCell.Tab.0.center" timestamp="1584371180577">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585311356032" />
+    <state width="1877" height="287" key="GridCell.Tab.0.center" timestamp="1585311356032">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584371180577" />
-    <state width="1878" height="269" key="GridCell.Tab.0.left" timestamp="1584371180576">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="287" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585311356032" />
+    <state width="1877" height="287" key="GridCell.Tab.0.left" timestamp="1585311356032">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584371180576" />
-    <state width="1878" height="269" key="GridCell.Tab.0.right" timestamp="1584371180578">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="287" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585311356032" />
+    <state width="1877" height="287" key="GridCell.Tab.0.right" timestamp="1585311356032">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584371180578" />
-    <state x="464" y="154" width="1024" height="840" key="SettingsEditor" timestamp="1584349247602">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="287" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585311356032" />
+    <state x="464" y="160" width="1024" height="840" key="SettingsEditor" timestamp="1585310934767">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="464" y="154" width="1024" height="840" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584349247602" />
-    <state x="643" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1584428742574">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="464" y="160" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585310934767" />
+    <state x="643" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1585547720062">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="643" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584428742574" />
+    <state x="643" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1585547720062" />
+    <state x="643" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585310887705" />
     <state x="834" y="380" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1584364960534">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
