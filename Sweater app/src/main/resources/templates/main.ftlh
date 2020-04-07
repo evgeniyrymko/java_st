@@ -11,14 +11,26 @@
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Add new message
     </a>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse <#if message??>show</#if>" id="collapseExample">
         <div class="form-group mt-3">
             <form method="post" action="main" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="text" placeholder="Введите сообщение"/>
+                    <input type="text" class="form-control ${(textError??)?string('is-invalid','')}"
+                           value="<#if message??>${message.text}</#if>" name="text" placeholder="Введите сообщение"/>
+                    <#if textError??>
+                        <div class="invalid-feedback">
+                            ${textError}
+                        </div>
+                    </#if>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="tag" placeholder="Введите тег"/>
+                    <input type="text" class="form-control ${(tagError??)?string('is-invalid','')}"
+                           value="<#if message??>${message.tag}</#if>" name="tag" placeholder="Введите тег"/>
+                    <#if tagError??>
+                        <div class="invalid-feedback">
+                            ${tagError}
+                        </div>
+                    </#if>
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
@@ -33,6 +45,8 @@
             </form>
         </div>
     </div>
+
+
 
     <div class="card-columns">
         <#list messages as message>
