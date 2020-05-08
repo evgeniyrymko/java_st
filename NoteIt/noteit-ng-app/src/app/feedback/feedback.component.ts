@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-feedback',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor() { }
+  model: FeedbackViewModel = {
+    name: '',
+    email: '',
+    feedback: ''
+  };
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
   }
 
+  sendFeedback(): void {
+    let url = "http://localhost:8082/api/feedback";
+    this.http.post(url, this.model).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert("An error occurred while sending a feedback");
+      }
+    );
+  }
+
+}
+
+export interface FeedbackViewModel {
+  name: string;
+  email: string;
+  feedback: string;
 }
