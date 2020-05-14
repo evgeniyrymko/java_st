@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Note} from "../model/note";
 
 @Component({
@@ -8,7 +8,9 @@ import {Note} from "../model/note";
 })
 export class NoteComponent implements OnInit {
 
-  note: Note;
+  @Input() note: Note;
+  @Output() updatedNote: EventEmitter<Note> = new EventEmitter<Note>();
+  @Output() deletedNote: EventEmitter<Note> = new EventEmitter<Note>();
 
   constructor() {
   }
@@ -17,8 +19,10 @@ export class NoteComponent implements OnInit {
   }
 
   public updateNote() {
+    this.updatedNote.emit(this.note);
   }
 
   public deleteNote() {
+    this.deletedNote.emit(this.note);
   }
 }
