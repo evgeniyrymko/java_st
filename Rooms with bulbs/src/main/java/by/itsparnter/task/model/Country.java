@@ -1,23 +1,22 @@
 package by.itsparnter.task.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title;
+    private String name;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Room> rooms;
 
-    public Country(){
-
+    public Country() {
     }
 
-    public Country(String title){
-        this.title = title;
+    public Country(String name){
+        this.name = name;
     }
 
     public Long getId() {
@@ -28,11 +27,19 @@ public class Country {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
     }
 }

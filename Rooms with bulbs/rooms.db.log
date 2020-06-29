@@ -5,8 +5,16 @@ drop table if exists room CASCADE
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
 create table bulb (id bigint not null, is_turned_on boolean not null, primary key (id))
-create table country (id bigint not null, title varchar(255), primary key (id))
+create table country (id bigint not null, name varchar(255), primary key (id))
 create table room (id bigint not null, name varchar(255), bulb_id bigint, country_id bigint, primary key (id))
 alter table room add constraint FK734njyreofxs1b4gjls2w26ao foreign key (bulb_id) references bulb
 alter table room add constraint FKef9o8n4mjdbc2gscggx3mtvo foreign key (country_id) references country
+INSERT INTO BULB VALUES(1,TRUE)
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO COUNTRY VALUES(2,'Belarus')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+INSERT INTO ROOM VALUES(3,'room1',1,2)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
+COMMIT

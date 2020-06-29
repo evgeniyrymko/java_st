@@ -5,12 +5,12 @@ import javax.persistence.*;
 @Entity
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Country country;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     private Bulb bulb;
 
     public Room() {

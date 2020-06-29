@@ -1,16 +1,15 @@
 package by.itsparnter.task.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Bulb {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private boolean isTurnedOn;
+    @OneToOne(mappedBy = "bulb")
+    private Room room;
 
     public Bulb() {
     }
@@ -33,5 +32,13 @@ public class Bulb {
 
     public void setTurnedOn(boolean turnedOn) {
         isTurnedOn = turnedOn;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }
