@@ -1,5 +1,7 @@
 package by.itsparnter.task.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class Bulb {
     private Long id;
     private boolean isTurnedOn;
     @OneToOne(mappedBy = "bulb")
+    @JsonIgnore
     private Room room;
 
     public Bulb() {
