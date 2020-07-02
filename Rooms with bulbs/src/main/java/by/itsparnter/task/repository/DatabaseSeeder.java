@@ -1,4 +1,4 @@
-package by.itsparnter.task.repositories;
+package by.itsparnter.task.repository;
 
 import by.itsparnter.task.model.Bulb;
 import by.itsparnter.task.model.Country;
