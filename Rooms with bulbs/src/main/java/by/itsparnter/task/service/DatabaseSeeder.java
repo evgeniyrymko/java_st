@@ -1,8 +1,11 @@
-package by.itsparnter.task.repository;
+package by.itsparnter.task.service;
 
 import by.itsparnter.task.model.Bulb;
 import by.itsparnter.task.model.Country;
 import by.itsparnter.task.model.Room;
+import by.itsparnter.task.repository.BulbRepository;
+import by.itsparnter.task.repository.CountryRepository;
+import by.itsparnter.task.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -42,9 +45,12 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         Bulb bulb3 = new Bulb(true);
         bulbRepository.save(bulb3);
-        Room room3 = new Room("room3mix",country1,bulb3);
+        Room room3 = new Room("room3mix", country1, bulb3);
         roomRepository.save(room3);
 
         System.out.println("DATABASE SEEDER IS SUCCESSFULLY EXECUTED!!!");
+
+
+
     }
 }

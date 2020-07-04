@@ -10,7 +10,7 @@ public class Bulb {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private boolean isTurnedOn;
-    @OneToOne(mappedBy = "bulb")
+    @OneToOne(mappedBy = "bulb", cascade = CascadeType.ALL)
     @JsonIgnore
     private Room room;
 

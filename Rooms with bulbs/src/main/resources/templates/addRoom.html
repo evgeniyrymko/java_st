@@ -1,24 +1,50 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Add Room</title>
+
 </head>
 <body>
 <h1>Create a Room:</h1>
 
 <form th:action="@{/rooms/add}"
       th:object="${roomDto}" method="POST">
-    <label>Room Name:</label>
-    <input type="text" th:field="*{name}" />
-    <br/>
-    <label>Country:</label>
-    <input type="text" th:field="*{countryName}" />
-    <br/>
-    <label>Bulb State:</label>
-    <input type="checkbox" th:field="*{bulbTurnedOn}" />
-    <br/>
-    <input type="submit" value="Add" />
+    <table>
+        <tr>
+            <td>Room Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <!--        <tr>-->
+        <!--            <td>Country:</td>-->
+        <!--            <td><input type="text" th:field="*{countryName}" /></td>-->
+        <!--            <td th:if="${#fields.hasErrors('countryName')}" th:errors="*{countryName}">Country Error</td>-->
+        <!--        </tr>-->
+
+        <tr>
+            <td>Country:</td>
+            <td>
+                <select th:field="*{countryName}">
+                <option th:each="country : ${allCountries}" th:value="${country.name}" th:text="${country.name}"></option>
+                </select>
+            </td>
+            <td th:if="${#fields.hasErrors('countryName')}" th:errors="*{countryName}">Country Error</td>
+        </tr>
+
+
+        <tr>
+            <td>Bulb State:</td>
+            <td><input type="checkbox" th:field="*{bulbTurnedOn}"/></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Add</button>
+            </td>
+        </tr>
+    </table>
+
+
 </form>
 
 

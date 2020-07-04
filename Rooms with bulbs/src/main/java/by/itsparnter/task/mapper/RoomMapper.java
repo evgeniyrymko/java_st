@@ -7,6 +7,8 @@ import by.itsparnter.task.model.Room;
 import by.itsparnter.task.repository.CountryRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class RoomMapper {
     private CountryRepository countryRepository;
@@ -18,11 +20,20 @@ public class RoomMapper {
     public Room convertRoomDtoToRoom(RoomDto roomDto) {
         Bulb bulb = new Bulb(roomDto.isBulbTurnedOn());
         Country country;
-        if (countryRepository.findByName(roomDto.getCountryName()).isPresent()) {
-            country = countryRepository.findByName(roomDto.getCountryName()).get();
+
+        Optional<Country> optionalCountry = countryRepository.findByName(roomDto.getCountryName());
+        if (optionalCountry.isPresent()) {
+            country = optionalCountry.get();
         } else {
             country = new Country(roomDto.getCountryName());
         }
+
+//        if (countryRepository.findByName(roomDto.getCountryName()).isPresent()) {
+//            country = countryRepository.findByName(roomDto.getCountryName()).get();
+//        } else {
+//            country = new Country(roomDto.getCountryName());
+//        }
+
         Room entity = new Room(roomDto.getName(), country, bulb);
         return entity;
     }

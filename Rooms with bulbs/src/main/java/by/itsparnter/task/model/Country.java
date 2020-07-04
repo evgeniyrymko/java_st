@@ -11,7 +11,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Room> rooms;
 

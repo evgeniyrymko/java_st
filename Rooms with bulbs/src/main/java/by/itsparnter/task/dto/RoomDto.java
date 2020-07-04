@@ -1,9 +1,13 @@
 package by.itsparnter.task.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class RoomDto {
 
     private long id;
+    @NotBlank(message = "Name of the room should not be empty")
     private String name;
+    @NotBlank(message = "Country name of the room should not be empty")
     private String countryName;
     private boolean isBulbTurnedOn;
 

@@ -1,6 +1,7 @@
 package by.itsparnter.task.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Room {
@@ -9,8 +10,10 @@ public class Room {
     private Long id;
     private String name;
     @ManyToOne
+    @NotNull
     private Country country;
     @OneToOne
+    @NotNull
     private Bulb bulb;
 
     public Room() {

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Rooms List</title>
 </head>
 <body>
@@ -14,11 +14,13 @@
             <th>Room name</th>
             <th>Country</th>
         </tr>
-        <tr th:each ="roomDto : ${allRoomsDto}">
+        <tr th:each="roomDto : ${allRoomsDto}">
             <td th:utext="${roomDto.name}">...</td>
             <td th:utext="${roomDto.countryName}">...</td>
         </tr>
     </table>
 </div>
+
+
 </body>
 </html>
