@@ -21,3 +21,5 @@ JavaRushTasks/JavaRushTasks/out.log
 LiquidTransfusion/.idea/
 LiquidTransfusion/out/
 LiquidTransfusion/JavaCore.iml
+
+*.db.*
