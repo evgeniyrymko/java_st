@@ -10,7 +10,9 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
+
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Room> rooms;
@@ -18,7 +20,7 @@ public class Country {
     public Country() {
     }
 
-    public Country(String name){
+    public Country(String name) {
         this.name = name;
     }
 

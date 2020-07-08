@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Rooms List</title>
+</head>
+<body>
+<h1>Rooms List</h1>
+<a th:href="@{/rooms/add}">Add Room</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Room name</th>
+            <th>Country</th>
+        </tr>
+        <tr th:each="roomDto : ${allRoomsDto}">
+            <td th:utext="${roomDto.name}">...</td>
+            <td th:utext="${roomDto.countryName}">...</td>
+            <td>
+                <a th:href="@{'/rooms/' + ${roomDto.id}}">Enter</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

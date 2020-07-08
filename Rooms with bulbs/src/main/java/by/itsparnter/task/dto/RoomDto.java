@@ -5,10 +5,13 @@ import javax.validation.constraints.NotBlank;
 public class RoomDto {
 
     private long id;
-    @NotBlank(message = "Name of the room should not be empty")
+
+    @NotBlank(message = "Name of the room should not be blank")
     private String name;
-    @NotBlank(message = "Country name of the room should not be empty")
+
+    @NotBlank(message = "Country name of the room should not be blank")
     private String countryName;
+
     private boolean isBulbTurnedOn;
 
     public RoomDto() {

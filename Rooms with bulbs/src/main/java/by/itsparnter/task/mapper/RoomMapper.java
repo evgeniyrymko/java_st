@@ -17,7 +17,7 @@ public class RoomMapper {
         this.countryRepository = countryRepository;
     }
 
-    public Room convertRoomDtoToRoom(RoomDto roomDto) {
+    public Room mapToRoom(RoomDto roomDto) {
         Bulb bulb = new Bulb(roomDto.isBulbTurnedOn());
         Country country;
 
@@ -27,18 +27,11 @@ public class RoomMapper {
         } else {
             country = new Country(roomDto.getCountryName());
         }
-
-//        if (countryRepository.findByName(roomDto.getCountryName()).isPresent()) {
-//            country = countryRepository.findByName(roomDto.getCountryName()).get();
-//        } else {
-//            country = new Country(roomDto.getCountryName());
-//        }
-
         Room entity = new Room(roomDto.getName(), country, bulb);
         return entity;
     }
 
-    public RoomDto convertRoomToRoomDto(Room room) {
+    public RoomDto mapToRoomDto(Room room) {
         RoomDto roomDto = new RoomDto();
         roomDto.setId(room.getId());
         roomDto.setName(room.getName());

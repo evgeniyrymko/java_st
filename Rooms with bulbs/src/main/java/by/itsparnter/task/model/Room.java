@@ -5,13 +5,17 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Room {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
+
     @ManyToOne
     @NotNull
     private Country country;
+
     @OneToOne
     @NotNull
     private Bulb bulb;

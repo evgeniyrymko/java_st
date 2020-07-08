@@ -1,57 +1,65 @@
 package by.itsparnter.task.controller;
 
 import by.itsparnter.task.dto.RoomDto;
-import by.itsparnter.task.service.CountryDtoService;
+import by.itsparnter.task.service.CountryService;
 import by.itsparnter.task.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/rooms")
 public class RoomController {
 
     private RoomService roomService;
-    private CountryDtoService countryDtoService;
+
 
     @Autowired
-    public RoomController(RoomService roomService, CountryDtoService countryDtoService) {
+    public RoomController(RoomService roomService) {
         this.roomService = roomService;
-        this.countryDtoService = countryDtoService;
+    }
+
+    @GetMapping(value = "/welcome")
+    public String welcomePage() {
+        return "index";
     }
 
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/rooms/all")
     public String getAllRoomsDto(Model model) {
         List<RoomDto> allRoomsDto = roomService.getAllRoomDto();
         model.addAttribute("allRoomsDto", allRoomsDto);
         return "roomsList";
     }
 
-    @GetMapping(value = "/add")
+    @GetMapping(value = "/rooms/add")
     public String addRoomDtoForm(Model model) {
-        model.addAttribute("allCountries", countryDtoService.getAllCountries());
+        model.addAttribute("allCountries", CountryService.allAvailableCountries);
         RoomDto roomDto = new RoomDto();
         model.addAttribute("roomDto", roomDto);
         return "addRoom";
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/rooms/add")
     public String addRoomDto(@Valid @ModelAttribute("roomDto") RoomDto roomDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("allCountries", CountryService.allAvailableCountries);
             return "addRoom";
         } else {
             this.roomService.addRoom(roomDto);
         }
         return "redirect:/rooms/all";
+    }
+
+    @GetMapping(value = "/rooms/{id}")
+    public String roomById(@PathVariable("id") long id, Model model) {
+        RoomDto roomDtoById = roomService.getRoomDtoById(id);
+        model.addAttribute("roomDtoById", roomDtoById);
+        return "room";
     }
 
 

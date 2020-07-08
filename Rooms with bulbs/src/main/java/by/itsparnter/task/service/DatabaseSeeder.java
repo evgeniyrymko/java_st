@@ -27,7 +27,7 @@ public class DatabaseSeeder implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Bulb bulb1 = new Bulb(true);
         bulbRepository.save(bulb1);
@@ -49,7 +49,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         roomRepository.save(room3);
 
         System.out.println("DATABASE SEEDER IS SUCCESSFULLY EXECUTED!!!");
-
 
 
     }

@@ -6,10 +6,13 @@ import javax.persistence.*;
 
 @Entity
 public class Bulb {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private boolean isTurnedOn;
+
     @OneToOne(mappedBy = "bulb", cascade = CascadeType.ALL)
     @JsonIgnore
     private Room room;
