@@ -2,7 +2,6 @@
 
 var stompClient = null;
 var idRoom = $('#idRoom');
-var stompClient = null;
 var topic = null;
 var currentSubscription;
 
@@ -27,7 +26,7 @@ function enterRoom(idRoom) {
 //
 // }
 
-function sendMessage() {
+function sendMessage(event) {
     var id = $("#idRoom").val().trim();
     var name = $("#name").val().trim();
     var countryName = $("#countryName").val().trim();
@@ -37,6 +36,7 @@ function sendMessage() {
         var roomDto = {id: id, name: name, countryName: countryName, bulbTurnedOn: bulbTurnedOn};
         stompClient.send(`${topic}/sendMessage`, {}, JSON.stringify(roomDto));
     }
+    event.preventDefault();
 }
 
 function onMessageReceived(payload){
@@ -46,3 +46,8 @@ function onMessageReceived(payload){
     newP.appendChild(document.createTextNode(roomDto.bulbTurnedOn));
     output.appendChild(newP);
 }
+
+$(document).ready(function() {
+    switchDiv.addEventListener('submit', connect, true);
+    switchDiv.addEventListener('submit', sendMessage, true);
+});
