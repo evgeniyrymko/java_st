@@ -25,7 +25,7 @@ public class ChatRoomController {
     }
 
     @MessageMapping("/chat/{roomId}/sendMessage")
-    public void sendMessage(@DestinationVariable String roomId, @Payload RoomDto roomDto){
+        public void sendMessage(@DestinationVariable String roomId, @Payload RoomDto roomDto){
         logger.info(roomId + "room DTO is received " + roomDto.getId());
         boolean currentRoomDtoBulbState = roomDto.isBulbTurnedOn();
         roomDto.setBulbTurnedOn(!currentRoomDtoBulbState);
