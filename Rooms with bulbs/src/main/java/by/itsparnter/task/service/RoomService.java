@@ -48,6 +48,7 @@ public class RoomService {
         roomRepository.save(room);
     }
 
+
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public RoomDto getRoomDtoById(long id) {
         Room room = roomRepository.findById(id).get();

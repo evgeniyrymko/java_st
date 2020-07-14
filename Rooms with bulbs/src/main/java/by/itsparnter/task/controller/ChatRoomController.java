@@ -1,6 +1,7 @@
 package by.itsparnter.task.controller;
 
 import by.itsparnter.task.dto.RoomDto;
+import by.itsparnter.task.service.BulbService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,21 @@ public class ChatRoomController {
 
     private final SimpMessageSendingOperations messageTemplate;
 
+    private BulbService bulbService;
+
+
     @Autowired
-    public ChatRoomController(SimpMessageSendingOperations messageTemplate) {
+    public ChatRoomController(SimpMessageSendingOperations messageTemplate, BulbService bulbService) {
         this.messageTemplate = messageTemplate;
+        this.bulbService = bulbService;
     }
 
     @MessageMapping("/chat/{roomId}/sendMessage")
-        public void sendMessage(@DestinationVariable String roomId, @Payload RoomDto roomDto){
-        logger.info(roomId + "room DTO is received " + roomDto.getId());
-        boolean currentRoomDtoBulbState = roomDto.isBulbTurnedOn();
-        roomDto.setBulbTurnedOn(!currentRoomDtoBulbState);
-        messageTemplate.convertAndSend(format("/chat-room/%s",roomId), roomDto);
+    public void sendMessage(@DestinationVariable String roomId, @Payload RoomDto roomDto) {
+        logger.info("Room DTO is received " + roomDto.getId() + "-" + roomDto.getName() + "-" + roomDto.getCountryName() + "-" + roomDto.isBulbTurnedOn());
+        RoomDto roomDtoSent = bulbService.switchBulbInTheRoom(roomDto);
+        messageTemplate.convertAndSend(format("/chat-room/%s", roomId), roomDtoSent);
+        logger.info("Room DTO is sent " + roomDtoSent.getId() + "-" + roomDtoSent.getName() + "-" + roomDtoSent.getCountryName() + "-" + roomDtoSent.isBulbTurnedOn());
     }
 
 }

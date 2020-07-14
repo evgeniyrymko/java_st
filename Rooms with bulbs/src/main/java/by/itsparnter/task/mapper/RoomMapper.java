@@ -28,6 +28,7 @@ public class RoomMapper {
             country = new Country(roomDto.getCountryName());
         }
         Room entity = new Room(roomDto.getName(), country, bulb);
+
         return entity;
     }
 

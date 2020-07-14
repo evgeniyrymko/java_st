@@ -5,21 +5,23 @@ var idRoom = $('#idRoom').html();
 var topic = null;
 var currentSubscription;
 
-function connect(event) {
+window.onload = init;
+
+function connect() {
     var socket = new SockJS('/sock');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected);
-    event.preventDefault();
+    // event.preventDefault();
 }
 
 function onConnected() {
-    enterRoom(idRoom.value);
+    enterRoom();
 }
 
-function enterRoom(idRoom) {
-    var roomId = idRoom;
-    topic = '/chat-app/chat/6';
-    currentSubscription = stompClient.subscribe('/chat-room/6', onMessageReceived);
+function enterRoom() {
+    var id = $("#idRoom").html();
+    topic = '/chat-app/chat/' + id;
+    currentSubscription = stompClient.subscribe('/chat-room/' + id, onMessageReceived);
 }
 
 // function onMessageReceived(payload) {
@@ -39,15 +41,20 @@ function sendMessage(event) {
     event.preventDefault();
 }
 
-function onMessageReceived(payload){
+function onMessageReceived(payload) {
     var roomDto = JSON.parse(payload.body);
-    var output = document.getElementById("bulbState");
-    var newP = document.createElement('p');
-    newP.appendChild(document.createTextNode(roomDto.bulbTurnedOn));
-    output.appendChild(newP);
+    var output = document.getElementById("bulbTurnedOn");
+    output.innerHTML = roomDto.bulbTurnedOn.toString();
+    // var newP = document.createElement('p');
+    // newP.appendChild(document.createTextNode(roomDto.bulbTurnedOn));
+    // output.appendChild(newP);
 }
 
-$(document).ready(function() {
-    messagebox.addEventListener('submit', connect, true);
+function init() {
+    connect();
+}
+
+$(document).ready(function () {
+    // messagebox.addEventListener('submit', connect, true);
     messagebox.addEventListener('submit', sendMessage, true);
 });
