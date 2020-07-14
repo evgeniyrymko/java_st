@@ -2,6 +2,7 @@ package by.itsparnter.task.controller;
 
 import by.itsparnter.task.dto.RoomDto;
 import by.itsparnter.task.service.CountryService;
+import by.itsparnter.task.service.GeolocationService;
 import by.itsparnter.task.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @Controller
@@ -20,10 +23,13 @@ public class RoomController {
 
     private RoomService roomService;
 
+    private GeolocationService geolocationService;
+
 
     @Autowired
-    public RoomController(RoomService roomService) {
+    public RoomController(RoomService roomService, GeolocationService geolocationService) {
         this.roomService = roomService;
+        this.geolocationService = geolocationService;
     }
 
     @GetMapping(value = "/welcome")
@@ -59,7 +65,11 @@ public class RoomController {
     }
 
     @GetMapping(value = "/rooms/{id}")
-    public String roomById(@PathVariable("id") long id, Model model) {
+    public String roomById(@PathVariable("id") long id, Model model, HttpServletRequest request) {
+        System.out.println(request.getRemoteAddr());
+            String country = geolocationService.defineCountryByIp("95.31.18.119");
+            System.out.println(country + " ----- from controller");
+
         RoomDto roomDtoById = roomService.getRoomDtoById(id);
         model.addAttribute("roomDtoById", roomDtoById);
         return "room";

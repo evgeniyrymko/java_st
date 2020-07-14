@@ -1,48 +1,80 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Room</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Room chat</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="/common.css" rel="stylesheet">
 </head>
 <body>
-<div id="SwitchDiv">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/welcome}">Welcome page</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/rooms/all}">Rooms list</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/rooms/add}">Add new Room</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <h1 class="mt-5  text-center">Room chat</h1>
     <form id="messagebox" name="messagebox">
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Room name</th>
-            <th>Country</th>
-            <th>Bulb state</th>
-        </tr>
-        <tr>
-            <td id="idRoom" th:text="${roomDtoById.id}">...</td>
-            <td id="name" th:text="${roomDtoById.name}">...</td>
-            <td id="countryName" th:text="${roomDtoById.countryName}">...</td>
-            <td id="bulbTurnedOn" th:text="${roomDtoById.bulbTurnedOn} ? 'true' : 'false'"></td>
-            <td id="bulbState"></td>
-        </tr>
-    </table>
-<!--    <div>-->
-<!--        <button type="submit" id="switch" onclick="sendMessage();">Switch bulb state</button>-->
-<!--    </div>-->
-
-
-
-<!--        <div class="form-group">-->
-<!--            <label for="message">Enter Message:</label>-->
-<!--            <input type="text" class="form-control" id="message" aria-describedby="name" placeholder="Enter message to chat ....">-->
-<!--        </div>-->
-        <button type="submit" class="btn btn-primary">Send</button>
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Room name</th>
+                <th scope="col">Country</th>
+                <th scope="col">Bulb state</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="idRoom" th:text="${roomDtoById.id}">...</td>
+                <td id="name" th:text="${roomDtoById.name}">...</td>
+                <td id="countryName" th:text="${roomDtoById.countryName}">...</td>
+                <td id="bulbTurnedOn" th:text="${roomDtoById.bulbTurnedOn} ? 'true' : 'false'"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="form-group center">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-success btn-lg">Switch bulb state</button>
+                <a class="btn btn-primary btn-lg" th:href="@{/rooms/all}">Go to Rooms list</a>
+            </div>
+        </div>
     </form>
+</main>
 
-
-</div>
+<footer class="footer">
+    <div class="container text-center">
+        <span>Made by <a href="https://www.linkedin.com/in/evgeniyrymko/" th:target="_blank">Evgeniy Rymko</a></span>
+    </div>
+</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script src="/js/mychat.js"></script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>

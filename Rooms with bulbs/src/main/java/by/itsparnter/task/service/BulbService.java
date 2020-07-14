@@ -30,7 +30,7 @@ public class BulbService {
 
         Room roomReceivedById = roomRepository.findById(roomDtoReceived.getId()).get();
         Bulb bulbReceivedById = bulbRepository.findById(roomReceivedById.getBulb().getId()).get();
-        bulbReceivedById.setTurnedOn(!bulbReceivedById.isTurnedOn());
+        bulbReceivedById.setTurnedOn(!roomDtoReceived.isBulbTurnedOn());
 
         bulbRepository.save(bulbReceivedById);
 
