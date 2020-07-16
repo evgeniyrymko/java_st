@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
 
 @Service
 public class GeolocationService {
@@ -29,10 +26,11 @@ public class GeolocationService {
 
         try (DatabaseReader dbReader = new DatabaseReader.Builder(db).build()) {
             InetAddress ipAddress = InetAddress.getByName(ip);
-            logger.info(ipAddress.toString());
+//            logger.info(ipAddress.toString());
             CountryResponse countryResponse = dbReader.country(ipAddress);
             countryName = countryResponse.getCountry().getName();
-            logger.info(countryName);
+//            logger.info(countryName);
+
         } catch (IOException e) {
             logger.error("IOException has been caught.", e);
         } catch (GeoIp2Exception e) {
