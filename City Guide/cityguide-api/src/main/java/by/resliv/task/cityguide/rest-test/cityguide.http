@@ -1,0 +1,41 @@
+# API CITIES MANAGEMENT
+
+GET {{host-url}}/all
+
+###
+
+GET {{host-url}}/byId/2
+
+###
+
+GET {{host-url}}/byId/4
+
+###
+
+DELETE {{host-url}}/2
+
+###
+
+DELETE {{host-url}}/4
+
+###
+
+POST {{host-url}}
+Content-Type: application/json
+
+{
+  "name": "Test city 001",
+  "cityDescription": "Test city description 001"
+}
+
+###
+
+POST {{host-url}}
+Content-Type: application/json
+
+{
+  "name": "Test city 002",
+  "cityDescription": "Test city description 002"
+}
+
+###

@@ -3,6 +3,7 @@ package by.resliv.task.cityguide.api;
 import by.resliv.task.cityguide.dto.CityDto;
 import by.resliv.task.cityguide.mapper.CityMapper;
 import by.resliv.task.cityguide.model.City;
+import by.resliv.task.cityguide.model.CityDescription;
 import by.resliv.task.cityguide.repository.CityDescriptionRepository;
 import by.resliv.task.cityguide.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,11 @@ public class CityController {
 
     @DeleteMapping("/{id}")
     public void deleteCity(@PathVariable long id) {
-        this.cityRepository.deleteById(id);
+        City cityById = this.cityRepository.findById(id).get();
+        CityDescription cityDescriptionById = cityById.getCityDescription();
+        cityDescriptionRepository.delete(cityDescriptionById);
+        cityRepository.delete(cityById);
+
     }
 
 
