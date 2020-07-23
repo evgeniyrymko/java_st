@@ -1,11 +1,17 @@
 package by.resliv.task.cityguide.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class CityDto {
 
     private String id;
 
+    @NotNull
     private String name;
 
+    @NotNull
+    @Min(10)
     private String cityDescription;
 
     public String getId() {

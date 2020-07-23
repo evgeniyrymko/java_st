@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addNewCity()" novalidate class="feedback-form">
+
+        <!-- City -->
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text"
+                 id="city"
+                 class="form-control"
+                 name="city"
+                 placeholder="Enter city..."
+                 [(ngModel)]="model.name"
+                 #name="ngModel"
+                 [ngClass]="{'is-invalid': f.submitted && name.invalid}"
+                 required/>
+          <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+            <div *ngIf="name.errors?.required">City name is not valid</div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            class="form-control"
+            name="description"
+            placeholder="Enter description..."
+            rows="10"
+            [(ngModel)]="model.cityDescription"
+            #description="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && description.invalid}"
+            required minlength="10">
+			    </textarea>
+          <div *ngIf="f.submitted && description.invalid" class="invalid-input">
+            <div *ngIf="description.errors?.required">Description is not valid</div>
+            <div *ngIf="description.errors?.minlength">Description should contain more than 10 characters</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-info pull-right">
+          <span>Add new city</span>
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>

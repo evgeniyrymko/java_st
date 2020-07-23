@@ -9,9 +9,11 @@ public class City {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     @OneToOne
+    @JoinColumn
     private CityDescription cityDescription;
 
     public City() {

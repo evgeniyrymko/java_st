@@ -19,6 +19,9 @@ public class CityMapper {
     public City convertToCity(CityDto cityDto) {
         CityDescription cityDescription = new CityDescription(cityDto.getCityDescription());
         City city = new City();
+        if (cityDto.getId() != null && !cityDto.getId().isEmpty()) {
+            city.setId(Long.parseLong(cityDto.getId()));
+        }
         city.setName(cityDto.getName());
         city.setCityDescription(cityDescription);
         return city;

@@ -20,7 +20,7 @@ DELETE {{host-url}}/4
 
 ###
 
-POST {{host-url}}
+POST {{host-url}}/new
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 
-POST {{host-url}}
+POST {{host-url}}/new
 Content-Type: application/json
 
 {
