@@ -63,12 +63,19 @@ public class CityService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public City updateCity(CityDto updatedCityDto) {
+    public void updateCity(CityDto updatedCityDto) {
         City updatedCity = this.cityMapper.convertToCity(updatedCityDto);
         City cityById = cityRepository.findById(updatedCity.getId()).get();
         cityById.setName(updatedCity.getName());
         cityRepository.save(cityById);
-        return cityById;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updateCityDescription(CityDto cityDto) {
+        City updatedCity = this.cityMapper.convertToCity(cityDto);
+        CityDescription cityDescriptionById = cityRepository.findById(updatedCity.getId()).get().getCityDescription();
+        cityDescriptionById.setDescription(updatedCity.getCityDescription().getDescription());
+        cityDescriptionRepository.save(cityDescriptionById);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

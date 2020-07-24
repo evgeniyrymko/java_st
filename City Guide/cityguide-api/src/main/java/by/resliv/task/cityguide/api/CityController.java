@@ -45,15 +45,27 @@ public class CityController {
     }
 
     @PostMapping("/update-city")
-    public City updateCity(@RequestBody CityDto cityDto, BindingResult bindingResult) {
+    public void updateCity(@RequestBody CityDto cityDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             try {
-                throw new ValidationException("An error occurred while saving new city");
+                throw new ValidationException("An error occurred while updating city");
             } catch (ValidationException e) {
                 e.printStackTrace();
             }
         }
-        return cityService.updateCity(cityDto);
+        cityService.updateCity(cityDto);
+    }
+
+    @PostMapping("/update-description")
+    public void updateCityDescription(@RequestBody CityDto cityDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            try {
+                throw new ValidationException("An error occurred while updating city description");
+            } catch (ValidationException e) {
+                e.printStackTrace();
+            }
+        }
+        cityService.updateCityDescription(cityDto);
     }
 
     @DeleteMapping("/{id}")

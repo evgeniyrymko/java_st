@@ -7,10 +7,10 @@
       <br>
       <div class="list-group list-group-flush">
         <!-- Cities List -->
-        <a *ngFor="let city of cities" class="list-group-item list-group-item-action">
+        <a *ngFor="let city of cities" (click)="selectCity(city)" class="list-group-item list-group-item-action">
           <i class="fa"></i>
           <input [(ngModel)]="city.name" (change)="updateCity(city)" type="text" class="input-label" style="width: 80%;">
-          <a class="pull-right text-danger">
+          <a (click)="deleteCity(city)" class="pull-right text-danger">
             <i class="fa fa-trash-o"></i>
           </a>
         </a>
@@ -18,23 +18,25 @@
     </div>
 
     <!-- Description Panel -->
-    <div class="col-md-9">
+    <!--    Message if there's no selected city-->
+    <div *ngIf="currentCity == null" class="col-md-9">
       <div class="row">
-        <div class="col-md-12">
-          <!-- Message if there is no description -->
-        </div>
-      </div>
-      <div class="row">
-        <!-- Description -->
+        <p>Select city in the left panel to manage it's description.</p>
       </div>
     </div>
+
+    <div *ngIf="currentCity != null" class="col-md-9">
+      <div class="row">
+        <!-- Description -->
+        <textarea class="input-label"
+                  style="width: 100%; background-color: antiquewhite"
+                  [(ngModel)]="currentCity.cityDescription"
+                  (change)="updateCityDescription(currentCity)"
+        >
+        </textarea>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!--<a class="list-group-item list-group-item-action">-->
-<!--  <i class="fa fa-book"></i>&nbsp;-->
-<!--  <input type="text" class="input-label" style="width: 80%;">-->
-<!--  <a class="pull-right text-danger">-->
-<!--    <i class="fa fa-trash-o"></i>-->
-<!--  </a>-->
-<!--</a>-->
