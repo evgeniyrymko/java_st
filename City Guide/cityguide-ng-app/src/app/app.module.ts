@@ -8,9 +8,9 @@ import {NewCityComponent} from './new-city/new-city.component';
 import {CitiesComponent} from './cities/cities.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {Router, RouterModule, Routes} from "@angular/router";
-import {GuideComponent} from './guide/guide.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {GuideComponent} from './guide/guide.component';
 
 const appRoutes: Routes = [
   {

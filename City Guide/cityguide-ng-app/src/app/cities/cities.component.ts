@@ -16,7 +16,6 @@ export class CitiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCities();
-    // this.currentCity = this.cities[0];
   }
 
   selectCity(city: City) {

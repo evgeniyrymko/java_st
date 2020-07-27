@@ -1,1 +1,39 @@
-<p>guide works!</p>
+<div class="m-3">
+
+  <form name="form" class="col-lg-6 offset-lg-3 form-inline" (ngSubmit)="searchCity(searchCityName)">
+    <!-- City -->
+    <div class="form-group">
+      <input type="text"
+             id="city"
+             class="form-control"
+             name="city"
+             placeholder="Enter city name..."
+             [(ngModel)]="searchCityName"
+      >
+      <button type="submit" class="btn btn-info pull-right ml-2">
+        Get guide
+      </button>
+    </div>
+  </form>
+
+
+  <!-- Description Panel -->
+    <div *ngIf="city == null" class="m-3">
+      <div class="row">
+        <p>There's no city with such name</p>
+      </div>
+    </div>
+
+  <div class="row">
+    <div *ngIf="city != null" class="m-3">
+      <div class="row">
+        <!-- Description -->
+        <p class="input-label">{{city.cityDescription}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
