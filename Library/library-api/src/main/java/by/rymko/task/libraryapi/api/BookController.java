@@ -1,6 +1,6 @@
 package by.rymko.task.libraryapi.api;
 
-import by.rymko.task.libraryapi.model.Book;
+import by.rymko.task.libraryapi.dto.BookDto;
 import by.rymko.task.libraryapi.repository.BookRepository;
 import by.rymko.task.libraryapi.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ public class BookController {
     }
 
     @GetMapping("/all")
-    public List<Book> getAllBooks() {
-        return this.bookRepository.findAll();
+    public List<BookDto> getAllBooks() {
+        return this.bookService.getAllBooks();
     }
 
     @GetMapping("/byId/{id}")
-    public Book getBookById(@PathVariable long id) {
-        return this.bookRepository.findById(id).get();
+    public BookDto getBookById(@PathVariable long id) {
+        return this.bookService.getBookById(id);
     }
 }

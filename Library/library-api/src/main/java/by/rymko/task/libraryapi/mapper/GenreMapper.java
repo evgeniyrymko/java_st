@@ -5,8 +5,6 @@ import by.rymko.task.libraryapi.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
-
 @Component
 public class GenreMapper {
 
@@ -17,9 +15,9 @@ public class GenreMapper {
         GenreDto genreDto = new GenreDto();
         genreDto.setId(genre.getId().toString());
         genreDto.setName(genre.getName());
-        genreDto.setBooks(genre.getBooks().stream()
-                .map(book -> this.bookMapper.convertToBookDto(book))
-                .collect(Collectors.toSet()));
+//        genreDto.setBooks(genre.getBooks().stream()
+//                .map(book -> this.bookMapper.convertToBookDto(book))
+//                .collect(Collectors.toSet()));
         return genreDto;
     }
 
@@ -28,9 +26,9 @@ public class GenreMapper {
         //noinspection DuplicatedCode
         if (genreDto.getId() != null && !genreDto.getId().isEmpty()) genre.setId(Long.parseLong(genreDto.getId()));
         genre.setName(genreDto.getName());
-        genre.setBooks(genreDto.getBooks().stream()
-                .map(bookDto -> this.bookMapper.convertToBook(bookDto))
-                .collect(Collectors.toSet()));
+//        genre.setBooks(genreDto.getBooks().stream()
+//                .map(bookDto -> this.bookMapper.convertToBook(bookDto))
+//                .collect(Collectors.toSet()));
         return genre;
     }
 }

@@ -4,14 +4,14 @@ GET {{host-url}}/books/all
 
 ###
 
-GET GET {{host-url}}/books/byId/1
+GET {{host-url}}/books/byId/1
 
 ###
 
-GET GET {{host-url}}/books/byId/3
+GET {{host-url}}/books/byId/3
 
 ###
 
-GET GET {{host-url}}/books/byId/5
+GET {{host-url}}/books/byId/5
 
 ###
