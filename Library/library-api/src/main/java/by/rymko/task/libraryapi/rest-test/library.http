@@ -1,4 +1,4 @@
-###
+### BOOKS ###
 
 GET {{host-url}}/books/all
 
@@ -8,10 +8,142 @@ GET {{host-url}}/books/byId/1
 
 ###
 
-GET {{host-url}}/books/byId/3
+POST {{host-url}}/books
+Content-Type: application/json
+
+{
+  "id": "",
+  "title": "Childhood",
+  "authors": [
+    {
+      "id": "2",
+      "name": "Tolstoy"
+    }
+  ],
+  "genre": {
+    "id": "1",
+    "name": "Novel"
+  }
+}
 
 ###
 
-GET {{host-url}}/books/byId/5
+POST {{host-url}}/books
+Content-Type: application/json
+
+{
+  "id": "4",
+  "title": "Childhood",
+  "authors": [
+    {
+      "id": "1",
+      "name": "Pushkin"
+    }
+  ],
+  "genre": {
+    "id": "1",
+    "name": "Novel"
+  }
+}
+
+###
+
+DELETE {{host-url}}/books/1
+
+### AUTHORS ###
+
+GET {{host-url}}/authors/all
+
+###
+
+GET {{host-url}}/authors/byId/1
+
+###
+
+POST {{host-url}}/authors
+Content-Type: application/json
+
+{
+  "id": "",
+  "name": "Lermontov"
+}
+
+###
+
+POST {{host-url}}/authors
+Content-Type: application/json
+
+{
+  "id": "3",
+  "name": "Dovlatov"
+}
+
+###
+
+DELETE {{host-url}}/authors/1
+
+### GENRES ###
+
+GET {{host-url}}/genres/all
+
+###
+
+GET {{host-url}}/genres/byId/1
+
+###
+
+POST {{host-url}}/genres
+Content-Type: application/json
+
+{
+  "id": "",
+  "name": "Science Fiction"
+}
+
+###
+
+POST {{host-url}}/genres
+Content-Type: application/json
+
+{
+  "id": "5",
+  "name": "Story"
+}
+
+###
+
+DELETE {{host-url}}/genres/4
+
+### FINAL TESTS ###
+
+POST {{host-url}}/books
+Content-Type: application/json
+
+{
+  "id": "",
+  "title": "Test Book",
+  "authors": [
+    {
+      "id": "1",
+      "name": "Pushkin"
+    },
+    {
+      "id": "2",
+      "name": "Tolstoy"
+    },
+    {
+      "id": "3",
+      "name": "Dovlatov"
+    },
+    {
+      "id": "4",
+      "name": "Lermontov"
+    }
+  ],
+  "genre": {
+    "id": "5",
+    "name": "Story"
+  }
+}
 
 ###

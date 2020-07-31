@@ -40,9 +40,15 @@ public class BookService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Book addBook(BookDto bookDto) {
+    public BookDto saveUpdateBook(BookDto bookDto) {
         Book book = this.bookMapper.convertToBook(bookDto);
-        bookRepository.save(book);
-        return book;
+        Book updatedBook = bookRepository.save(book);
+        BookDto updatedBookDto = this.bookMapper.convertToBookDto(updatedBook);
+        return updatedBookDto;
+    }
+
+    @Transactional
+    public void deleteBookById(long id) {
+        this.bookRepository.deleteById(id);
     }
 }

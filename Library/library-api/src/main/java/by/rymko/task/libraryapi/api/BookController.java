@@ -1,11 +1,12 @@
 package by.rymko.task.libraryapi.api;
 
 import by.rymko.task.libraryapi.dto.BookDto;
-import by.rymko.task.libraryapi.repository.BookRepository;
 import by.rymko.task.libraryapi.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
 
 @RestController
@@ -15,12 +16,9 @@ public class BookController {
 
     private BookService bookService;
 
-    private BookRepository bookRepository;
-
     @Autowired
-    public BookController(BookService bookService, BookRepository bookRepository) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
-        this.bookRepository = bookRepository;
     }
 
     @GetMapping("/all")
@@ -32,4 +30,18 @@ public class BookController {
     public BookDto getBookById(@PathVariable long id) {
         return this.bookService.getBookById(id);
     }
+
+    @PostMapping
+    public BookDto saveUpdateBook(@RequestBody BookDto bookDto,
+                                  BindingResult bindingResult) throws ValidationException {
+        if (bindingResult.hasErrors()) throw new ValidationException("An error has occurred while saving a book");
+        BookDto updatedBookDto = this.bookService.saveUpdateBook(bookDto);
+        return updatedBookDto;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBookById(@PathVariable long id) {
+        this.bookService.deleteBookById(id);
+    }
 }
+
