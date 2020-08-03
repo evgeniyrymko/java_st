@@ -1,1 +1,24 @@
-<p>genres works!</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="margin-top: 20px; margin-bottom: 20px;">
+    <h2 align="center">Genres list</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped w-50" style="margin: auto">
+      <thead>
+      <tr>
+        <th class="w-50">Name</th>
+        <th class="w-50">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let genre of genres">
+        <td>{{genre.name}}</td>
+        <td>
+          <button (click)="updateGenre(genre.id)" class="btn btn-info">Update</button>
+          <button (click)="deleteGenre(genre.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

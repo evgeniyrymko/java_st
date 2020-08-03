@@ -1,0 +1,32 @@
+<div class="panel-heading" style="margin-top: 20px; margin-bottom: 20px;">
+  <h2 align="center">Add new Author</h2>
+</div>
+<div class="row">
+  <div class="offset-3"></div>
+  <div class="col-md-6">
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addNewAuthor()" novalidate class="feedback-form">
+
+      <!-- Author -->
+      <div class="form-group">
+        <input type="text"
+               id="author"
+               class="form-control"
+               name="author"
+               placeholder="Enter author name..."
+               [(ngModel)]="newAuthor.name"
+               #name="ngModel"
+               [ngClass]="{'is-invalid': f.submitted && name.invalid}"
+               required minlength="1"/>
+        <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+          <div *ngIf="name.errors?.required">Author name is not valid</div>
+          <div *ngIf="name.errors?.minlength">Author name should contain more than 1 character</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-info">
+        <span>Add new author</span>
+      </button>
+    </form>
+  </div>
+  <div class="offset-3"></div>
+</div>

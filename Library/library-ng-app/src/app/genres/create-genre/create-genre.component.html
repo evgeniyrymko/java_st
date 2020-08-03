@@ -1,0 +1,32 @@
+<div class="panel-heading" style="margin-top: 20px; margin-bottom: 20px;">
+  <h2 align="center">Add new Genre</h2>
+</div>
+<div class="row">
+  <div class="offset-3"></div>
+  <div class="col-md-6">
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addNewGenre()" novalidate class="feedback-form">
+
+      <!-- Genre -->
+      <div class="form-group">
+        <input type="text"
+               id="genre"
+               class="form-control"
+               name="genre"
+               placeholder="Enter genre name..."
+               [(ngModel)]="newGenre.name"
+               #name="ngModel"
+               [ngClass]="{'is-invalid': f.submitted && name.invalid}"
+               required minlength="1"/>
+        <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+          <div *ngIf="name.errors?.required">Genre name is not valid</div>
+          <div *ngIf="name.errors?.minlength">Genre name should contain more than 1 character</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-info">
+        <span>Add new genre</span>
+      </button>
+    </form>
+  </div>
+  <div class="offset-3"></div>
+</div>

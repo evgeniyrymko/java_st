@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Genre} from "../dto/genre";
+import {GenresApiService} from "../service/genres-api.service";
 
 @Component({
   selector: 'app-genres',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenresComponent implements OnInit {
 
-  constructor() { }
+  genres: Genre[] = [];
 
-  ngOnInit(): void {
+  constructor(private genresApiService: GenresApiService) {
   }
 
+  ngOnInit(): void {
+    this.getAllGenres();
+  }
+
+  private getAllGenres() {
+    this.genresApiService.getAllGenres().subscribe(
+      res => {
+        this.genres = res;
+      },
+      error => {
+        alert("An error has occurred while getting all genres.");
+      }
+    );
+  }
 }

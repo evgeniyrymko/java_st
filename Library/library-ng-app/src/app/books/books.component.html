@@ -1,1 +1,32 @@
-<p>books works!</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="margin-top: 20px; margin-bottom: 20px;">
+    <h2 align="center">Books list</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped w-75" style="margin: auto">
+      <thead>
+      <tr>
+        <th class="w-25">Title</th>
+        <th class="w-25">Authors</th>
+        <th class="w-25">Genre</th>
+        <th class="w-25">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.title}}</td>
+        <td>
+          <div *ngFor="let author of book.authors">
+            <p>{{author.name}}</p>
+          </div>
+        </td>
+        <td>{{book.genre.name}}</td>
+        <td>
+          <button (click)="updateBook(book.id)" class="btn btn-info">Update</button>
+          <button (click)="deleteBook(book.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
