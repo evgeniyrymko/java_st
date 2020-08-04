@@ -10,8 +10,7 @@ export class BookAuthorFilterPipe implements PipeTransform {
     if (text == null || text === "") {
       return books;
     }
-
-    // return books.filter(n => n.genre.name.toLowerCase().includes(text.toLowerCase()));
+    return books.filter(n => n.authors.filter(m => m.name.toLowerCase().includes(text.toLowerCase())));
   }
 
 }
