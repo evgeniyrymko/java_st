@@ -17,6 +17,8 @@ import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 import {UpdateAuthorComponent} from './authors/update-author/update-author.component';
 import {UpdateGenreComponent} from './genres/update-genre/update-genre.component';
 import { UpdateBookComponent } from './books/update-book/update-book.component';
+import { BookTitleFilterPipe } from './pipe/book-title-filter.pipe';
+import { BookAuthorFilterPipe } from './pipe/book-author-filter.pipe';
 
 const appRoutes: Routes = [
   {
@@ -74,7 +76,9 @@ const appRoutes: Routes = [
     CreateBookComponent,
     UpdateAuthorComponent,
     UpdateGenreComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    BookTitleFilterPipe,
+    BookAuthorFilterPipe
   ],
   imports: [
     BrowserModule,

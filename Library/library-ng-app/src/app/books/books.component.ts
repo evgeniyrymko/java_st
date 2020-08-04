@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
 export class BooksComponent implements OnInit {
 
   books: Book[] = [];
+  titleFilter: string;
+  authorFilter: string;
 
   constructor(private booksApiService: BooksApiService,
               private router: Router) {

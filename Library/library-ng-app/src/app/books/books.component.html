@@ -2,6 +2,20 @@
   <div class="panel-heading" style="margin-top: 20px; margin-bottom: 20px;">
     <h2 align="center">Books list</h2>
   </div>
+  <div class="w-50" style="margin: 20px auto;">
+    <input type="text"
+           [(ngModel)]="titleFilter"
+           class="form-control"
+           style="width: 100%;"
+           placeholder="Filter by title...">
+  </div>
+  <div class="w-50" style="margin: 20px auto;">
+    <input type="text"
+           [(ngModel)]="authorFilter"
+           class="form-control"
+           style="width: 100%;"
+           placeholder="Filter by author...">
+  </div>
   <div class="panel-body">
     <table class="table table-striped w-75" style="margin: auto">
       <thead>
@@ -13,7 +27,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let book of books">
+      <tr *ngFor="let book of books | bookTitleFilter:titleFilter | bookAuthorFilter:authorFilter">
         <td>{{book.title}}</td>
         <td>
           <div *ngFor="let author of book.authors">
