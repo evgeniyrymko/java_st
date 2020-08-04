@@ -16,6 +16,7 @@ export class BooksApiService {
   private ALL_BOOKS_URL = `${this.BASE_URL}/books/all`;
   private ADD_UPDATE_BOOK_URL = `${this.BASE_URL}/books`;
   private DELETE_UPDATE_BOOK_URL = `${this.BASE_URL}/books/`;
+  private GET_BOOK_BY_ID_URL = `${this.BASE_URL}/books/byId/`;
 
   getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.ALL_BOOKS_URL);
@@ -27,5 +28,9 @@ export class BooksApiService {
 
   deleteBook(id: string): Observable<any> {
     return this.http.delete(this.DELETE_UPDATE_BOOK_URL + id);
+  }
+
+  getBookById(id: string): Observable<Book> {
+    return this.http.get<Book>(this.GET_BOOK_BY_ID_URL + id);
   }
 }

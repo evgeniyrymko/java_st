@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Genre} from "../dto/genre";
 import {GenresApiService} from "../service/genres-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-genres',
@@ -11,7 +12,8 @@ export class GenresComponent implements OnInit {
 
   genres: Genre[] = [];
 
-  constructor(private genresApiService: GenresApiService) {
+  constructor(private genresApiService: GenresApiService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,5 +43,9 @@ export class GenresComponent implements OnInit {
         }
       );
     }
+  }
+
+  updateGenre(genre: Genre) {
+    this.router.navigate(['genres-update', genre.id]);
   }
 }

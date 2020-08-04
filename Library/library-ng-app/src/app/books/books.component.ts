@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from "../dto/book";
 import {BooksApiService} from "../service/books-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-books',
@@ -11,7 +12,8 @@ export class BooksComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor(private booksApiService: BooksApiService) {
+  constructor(private booksApiService: BooksApiService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -42,5 +44,9 @@ export class BooksComponent implements OnInit {
         }
       );
     }
+  }
+
+  updateBook(book: Book) {
+    this.router.navigate(['books-update', book.id]);
   }
 }

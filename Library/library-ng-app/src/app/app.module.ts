@@ -10,11 +10,13 @@ import {GenresComponent} from './genres/genres.component';
 import {Router, RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { CreateAuthorComponent } from './authors/create-author/create-author.component';
-import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
-import { CreateBookComponent } from './books/create-book/create-book.component';
+import {CreateAuthorComponent} from './authors/create-author/create-author.component';
+import {CreateGenreComponent} from './genres/create-genre/create-genre.component';
+import {CreateBookComponent} from './books/create-book/create-book.component';
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
-import { MultiselectTestComponent } from './multiselect-test/multiselect-test.component';
+import {UpdateAuthorComponent} from './authors/update-author/update-author.component';
+import {UpdateGenreComponent} from './genres/update-genre/update-genre.component';
+import { UpdateBookComponent } from './books/update-book/update-book.component';
 
 const appRoutes: Routes = [
   {
@@ -26,12 +28,20 @@ const appRoutes: Routes = [
     component: CreateBookComponent
   },
   {
+    path: 'books-update/:id',
+    component: UpdateBookComponent
+  },
+  {
     path: 'authors',
     component: AuthorsComponent
   },
   {
     path: 'authors-new',
     component: CreateAuthorComponent
+  },
+  {
+    path: 'authors-update/:id',
+    component: UpdateAuthorComponent
   },
   {
     path: 'genres',
@@ -42,8 +52,8 @@ const appRoutes: Routes = [
     component: CreateGenreComponent
   },
   {
-    path: 'test',
-    component: MultiselectTestComponent
+    path: 'genres-update/:id',
+    component: UpdateGenreComponent
   },
   {
     path: '',
@@ -62,7 +72,9 @@ const appRoutes: Routes = [
     CreateAuthorComponent,
     CreateGenreComponent,
     CreateBookComponent,
-    MultiselectTestComponent
+    UpdateAuthorComponent,
+    UpdateGenreComponent,
+    UpdateBookComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Author} from "../dto/author";
 import {AuthorsApiService} from "../service/authors-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-authors',
@@ -10,7 +11,8 @@ import {AuthorsApiService} from "../service/authors-api.service";
 export class AuthorsComponent implements OnInit {
   authors: Author[] = [];
 
-  constructor(private authorsApiService: AuthorsApiService) {
+  constructor(private authorsApiService: AuthorsApiService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,5 +42,9 @@ export class AuthorsComponent implements OnInit {
         }
       );
     }
+  }
+
+  updateAuthor(author: Author) {
+    this.router.navigate(['authors-update', author.id]);
   }
 }

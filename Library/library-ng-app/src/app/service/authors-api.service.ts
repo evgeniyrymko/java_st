@@ -15,6 +15,7 @@ export class AuthorsApiService {
   private ALL_AUTHORS_URL = `${this.BASE_URL}/authors/all`;
   private ADD_UPDATE_AUTHOR_URL = `${this.BASE_URL}/authors`;
   private DELETE_UPDATE_AUTHOR_URL = `${this.BASE_URL}/authors/`;
+  private GET_AUTHOR_BY_ID_URL = `${this.BASE_URL}/authors/byId/`;
 
   getAllAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(this.ALL_AUTHORS_URL);
@@ -26,5 +27,9 @@ export class AuthorsApiService {
 
   deleteAuthor(id: string): Observable<any> {
     return this.http.delete(this.DELETE_UPDATE_AUTHOR_URL + id);
+  }
+
+  getAuthorById(id: string): Observable<Author> {
+    return this.http.get<Author>(this.GET_AUTHOR_BY_ID_URL + id);
   }
 }
