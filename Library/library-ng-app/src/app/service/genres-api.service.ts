@@ -14,6 +14,7 @@ export class GenresApiService {
   private BASE_URL = "http://localhost:8085/api/";
   private ALL_GENRES_URL = `${this.BASE_URL}/genres/all`;
   private ADD_UPDATE_GENRE_URL = `${this.BASE_URL}/genres`;
+  private DELETE_UPDATE_GENRE_URL = `${this.BASE_URL}/genres/`;
 
   getAllGenres(): Observable<Genre[]> {
     return this.http.get<Genre[]>(this.ALL_GENRES_URL);
@@ -21,5 +22,9 @@ export class GenresApiService {
 
   addUpdateGenre(genre: Genre): Observable<Genre> {
     return this.http.post<Genre>(this.ADD_UPDATE_GENRE_URL, genre);
+  }
+
+  deleteGenre(id: string): Observable<any> {
+    return this.http.delete(this.DELETE_UPDATE_GENRE_URL + id);
   }
 }

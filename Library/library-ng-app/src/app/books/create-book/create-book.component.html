@@ -1,1 +1,55 @@
-<p>create-book works!</p>
+<div class="panel-heading" style="margin-top: 20px; margin-bottom: 20px;">
+  <h2 align="center">Add new Book</h2>
+</div>
+<div class="row">
+  <div class="offset-3"></div>
+  <div class="col-md-6">
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addNewBook()" novalidate class="feedback-form">
+
+      <!-- Title -->
+      <div class="form-group">
+        <input type="text"
+               id="title"
+               class="form-control"
+               name="title"
+               placeholder="Enter book title..."
+               [(ngModel)]="newBook.title"
+               #name="ngModel"
+               [ngClass]="{'is-invalid': f.submitted && name.invalid}"
+               required minlength="1"/>
+        <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+          <div *ngIf="name.errors?.required">Book title is not valid</div>
+          <div *ngIf="name.errors?.minlength">Book title should contain more than 1 character</div>
+        </div>
+      </div>
+
+      <!--      Authors-->
+      <div class="form-group">
+        <ng-multiselect-dropdown
+          [placeholder]="'Select authors...'"
+          [settings]="authorsDropdownSettings"
+          [data]="authorsDropdownList"
+          [(ngModel)]="newBook.authors"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        ></ng-multiselect-dropdown>
+      </div>
+
+      <!--      Genre-->
+      <div class="form-group">
+        <select name="genre" [(ngModel)]="newBook.genre">
+          <option value="" disabled>Select genre...</option>
+          <option *ngFor="let genre of genresList" [ngValue]="genre">
+            {{ genre.name }}
+          </option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-info">
+        <span>Add new book</span>
+      </button>
+    </form>
+  </div>
+  <div class="offset-3"></div>
+</div>
+

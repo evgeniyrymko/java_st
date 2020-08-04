@@ -29,4 +29,18 @@ export class BooksComponent implements OnInit {
       }
     );
   }
+
+  deleteBook(book: Book) {
+    if (confirm("Are you sure you want to delete " + book.title + "?")) {
+      this.booksApiService.deleteBook(book.id).subscribe(
+        res => {
+          let indexOfBook = this.books.indexOf(book);
+          this.books.splice(indexOfBook, 1);
+        },
+        error => {
+          alert("An error has occurred while deleting a book.")
+        }
+      );
+    }
+  }
 }

@@ -27,4 +27,18 @@ export class AuthorsComponent implements OnInit {
       }
     );
   }
+
+  deleteAuthor(author: Author) {
+    if (confirm("Are you sure you want to delete " + author.name + "?")) {
+      this.authorsApiService.deleteAuthor(author.id).subscribe(
+        res => {
+          let indexOfAuthor = this.authors.indexOf(author);
+          this.authors.splice(indexOfAuthor, 1);
+        },
+        error => {
+          alert("An error has occurred while deleting an author.")
+        }
+      );
+    }
+  }
 }

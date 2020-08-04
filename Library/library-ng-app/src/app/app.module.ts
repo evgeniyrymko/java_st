@@ -13,6 +13,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { CreateAuthorComponent } from './authors/create-author/create-author.component';
 import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
 import { CreateBookComponent } from './books/create-book/create-book.component';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import { MultiselectTestComponent } from './multiselect-test/multiselect-test.component';
 
 const appRoutes: Routes = [
   {
@@ -40,6 +42,10 @@ const appRoutes: Routes = [
     component: CreateGenreComponent
   },
   {
+    path: 'test',
+    component: MultiselectTestComponent
+  },
+  {
     path: '',
     component: BooksComponent,
     pathMatch: 'full'
@@ -55,14 +61,16 @@ const appRoutes: Routes = [
     GenresComponent,
     CreateAuthorComponent,
     CreateGenreComponent,
-    CreateBookComponent
+    CreateBookComponent,
+    MultiselectTestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,4 +28,18 @@ export class GenresComponent implements OnInit {
       }
     );
   }
+
+  deleteGenre(genre: Genre) {
+    if (confirm("Are you sure you want to delete " + genre.name + "?")) {
+      this.genresApiService.deleteGenre(genre.id).subscribe(
+        res => {
+          let indexOfGenre = this.genres.indexOf(genre);
+          this.genres.splice(indexOfGenre, 1);
+        },
+        error => {
+          alert("An error has occurred while deleting a genre.")
+        }
+      );
+    }
+  }
 }
