@@ -17,12 +17,11 @@ import java.util.stream.Collectors;
 @Service
 public class RoomService {
 
-    private BulbRepository bulbRepository;
-    private CountryRepository countryRepository;
-    private RoomRepository roomRepository;
-    private RoomMapper roomMapper;
+    private final BulbRepository bulbRepository;
+    private final CountryRepository countryRepository;
+    private final RoomRepository roomRepository;
+    private final RoomMapper roomMapper;
 
-    @Autowired
     public RoomService(BulbRepository bulbRepository, CountryRepository countryRepository, RoomRepository roomRepository, RoomMapper roomMapper) {
         this.bulbRepository = bulbRepository;
         this.countryRepository = countryRepository;

@@ -11,7 +11,8 @@ import java.util.Optional;
 
 @Component
 public class RoomMapper {
-    private CountryRepository countryRepository;
+
+    private final CountryRepository countryRepository;
 
     public RoomMapper(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;

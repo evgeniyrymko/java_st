@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"/>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Rooms list</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <!-- Custom styles for this template -->
-    <link href="/common.css" rel="stylesheet">
+    <link href="/common.css" rel="stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -39,7 +39,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="roomDto : ${allRoomsDto}">
+        <tr id="rooms-list" th:each="roomDto : ${allRoomsDto}">
             <td th:utext="${roomDto.name}">...</td>
             <td th:utext="${roomDto.countryName}">...</td>
             <td>

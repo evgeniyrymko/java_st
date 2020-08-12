@@ -18,13 +18,12 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(name = "application.db.databaseseeder", havingValue = "true")
 public class DatabaseSeeder implements CommandLineRunner {
 
-    private RoomRepository roomRepository;
-    private CountryRepository countryRepository;
-    private BulbRepository bulbRepository;
+    private final RoomRepository roomRepository;
+    private final CountryRepository countryRepository;
+    private final BulbRepository bulbRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
 
-    @Autowired
     public DatabaseSeeder(RoomRepository roomRepository, CountryRepository countryRepository, BulbRepository bulbRepository) {
         this.roomRepository = roomRepository;
         this.countryRepository = countryRepository;

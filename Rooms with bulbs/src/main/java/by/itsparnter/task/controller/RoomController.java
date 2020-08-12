@@ -24,12 +24,23 @@ public class RoomController {
 
     private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-    private RoomService roomService;
+    private final RoomService roomService;
 
-    private GeolocationService geolocationService;
+    private final GeolocationService geolocationService;
 
+    private static final String[] IP_HEADER_CANDIDATES = {
+            "X-Forwarded-For",
+            "Proxy-Client-IP",
+            "WL-Proxy-Client-IP",
+            "HTTP_X_FORWARDED_FOR",
+            "HTTP_X_FORWARDED",
+            "HTTP_X_CLUSTER_CLIENT_IP",
+            "HTTP_CLIENT_IP",
+            "HTTP_FORWARDED_FOR",
+            "HTTP_FORWARDED",
+            "HTTP_VIA",
+            "REMOTE_ADDR"};
 
-    @Autowired
     public RoomController(RoomService roomService, GeolocationService geolocationService) {
         this.roomService = roomService;
         this.geolocationService = geolocationService;
@@ -73,7 +84,7 @@ public class RoomController {
 //        Following piece of code represents definition of country name of current room and country name of user defined by his remote IP address.
 //        As this application runs on localhost, it always returns value 0:0:0:0:0:0:0:1.
 //        While using remote server it is possible to forbid user to enter room if his country name does not coincide country name of the room.
-        String ipUser = request.getRemoteAddr();
+        String ipUser = getClientIpAddress(request);
         logger.info("IP address of remote user called /rooms/{id} is -> " + ipUser);
 //        Here is the example to get country name. In remote server it's needed to apply ipUser as the parameter in defineCountryByIp() method.
         String countryUser = geolocationService.defineCountryByIp("95.31.18.119");
@@ -86,5 +97,14 @@ public class RoomController {
         return "room";
     }
 
+    public static String getClientIpAddress(HttpServletRequest request) {
+        for (String header : IP_HEADER_CANDIDATES) {
+            String ip = request.getHeader(header);
+            if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
+                return ip;
+            }
+        }
+        return request.getRemoteAddr();
+    }
 
 }

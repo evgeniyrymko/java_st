@@ -1,10 +1,16 @@
 package by.itsparnter.task.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
 public class Bulb {
 
     @Id
@@ -17,34 +23,7 @@ public class Bulb {
     @JsonIgnore
     private Room room;
 
-    public Bulb() {
-    }
-
     public Bulb(boolean isTurnedOn) {
         this.isTurnedOn = isTurnedOn;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public boolean isTurnedOn() {
-        return isTurnedOn;
-    }
-
-    public void setTurnedOn(boolean turnedOn) {
-        isTurnedOn = turnedOn;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
     }
 }

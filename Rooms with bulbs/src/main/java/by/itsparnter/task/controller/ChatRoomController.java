@@ -20,10 +20,8 @@ public class ChatRoomController {
 
     private final SimpMessageSendingOperations messageTemplate;
 
-    private BulbService bulbService;
+    private final BulbService bulbService;
 
-
-    @Autowired
     public ChatRoomController(SimpMessageSendingOperations messageTemplate, BulbService bulbService) {
         this.messageTemplate = messageTemplate;
         this.bulbService = bulbService;

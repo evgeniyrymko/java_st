@@ -12,13 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class BulbService {
 
-    private RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
 
-    private BulbRepository bulbRepository;
+    private final BulbRepository bulbRepository;
 
-    private RoomMapper roomMapper;
+    private final RoomMapper roomMapper;
 
-    @Autowired
     public BulbService(RoomRepository roomRepository, BulbRepository bulbRepository, RoomMapper roomMapper) {
         this.roomRepository = roomRepository;
         this.bulbRepository = bulbRepository;
