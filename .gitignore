@@ -1,5 +1,6 @@
-JavaCore/.idea/
-JavaCore/out/
+*/.idea/
+*/out/
+
 JavaCore/JavaCore.iml
 
 JavaRushTasks/.idea/
