@@ -3,6 +3,7 @@
 JavaCore/JavaCore.iml
 
 Topics/Design Patterns/out/
+Topics/Spock/target/
 
 *.iml
 *.info
