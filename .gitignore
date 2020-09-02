@@ -4,6 +4,7 @@ JavaCore/JavaCore.iml
 
 Topics/Design Patterns/out/
 Topics/Spock/target/
+Topics/Spring Testing/target/
 
 *.iml
 *.info
