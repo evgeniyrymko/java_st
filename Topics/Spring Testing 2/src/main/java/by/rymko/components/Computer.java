@@ -1,4 +1,4 @@
-package by.rymko;
+package by.rymko.components;
 
 public class Computer {
 

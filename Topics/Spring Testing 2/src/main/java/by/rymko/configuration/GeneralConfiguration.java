@@ -1,16 +1,16 @@
 package by.rymko.configuration;
 
-import by.rymko.Computer;
-import by.rymko.MusicPlayer;
-import by.rymko.music.ClassicalMusic;
-import by.rymko.music.RockMusic;
+import by.rymko.components.Computer;
+import by.rymko.components.MusicPlayer;
+import by.rymko.components.music.ClassicalMusic;
+import by.rymko.components.music.RockMusic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("by.rymko")
-public class SpringConfiguration {
+@ComponentScan("by.rymko.components")
+public class GeneralConfiguration {
 
     @Bean
     public ClassicalMusic classicalMusic() {

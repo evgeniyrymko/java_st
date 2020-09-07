@@ -1,6 +1,6 @@
-package by.rymko;
+package by.rymko.components;
 
-import by.rymko.music.Music;
+import by.rymko.components.music.Music;
 
 public class MusicPlayer {
 
@@ -11,6 +11,14 @@ public class MusicPlayer {
     public MusicPlayer(Music music1, Music music2) {
         this.music1 = music1;
         this.music2 = music2;
+    }
+
+    public Music getMusic1() {
+        return music1;
+    }
+
+    public Music getMusic2() {
+        return music2;
     }
 
     public String playMusic() {
