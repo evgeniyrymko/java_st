@@ -1,6 +1,6 @@
 package by.rymko.configuration
 
-import by.rymko.components.music.ClassicalMusic
+import by.rymko.component.music.ClassicalMusic
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean

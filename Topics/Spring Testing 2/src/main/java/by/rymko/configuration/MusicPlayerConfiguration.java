@@ -1,8 +1,8 @@
 package by.rymko.configuration;
 
-import by.rymko.components.MusicPlayer;
-import by.rymko.components.music.ClassicalMusic;
-import by.rymko.components.music.RockMusic;
+import by.rymko.component.MusicPlayer;
+import by.rymko.component.music.ClassicalMusic;
+import by.rymko.component.music.RockMusic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

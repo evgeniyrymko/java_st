@@ -1,4 +1,4 @@
-package by.rymko.components;
+package by.rymko.component;
 
 import by.rymko.configuration.MusicPlayerConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

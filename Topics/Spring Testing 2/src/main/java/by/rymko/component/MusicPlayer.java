@@ -1,6 +1,6 @@
-package by.rymko.components;
+package by.rymko.component;
 
-import by.rymko.components.music.Music;
+import by.rymko.component.music.Music;
 
 public class MusicPlayer {
 

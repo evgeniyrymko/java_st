@@ -1,4 +1,4 @@
-package by.rymko.components.music;
+package by.rymko.component.music;
 
 public class ClassicalMusic implements Music {
 
