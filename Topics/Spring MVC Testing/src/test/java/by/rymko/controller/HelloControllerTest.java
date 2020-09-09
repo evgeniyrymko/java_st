@@ -7,7 +7,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 public class HelloControllerTest {
 
@@ -17,6 +18,7 @@ public class HelloControllerTest {
     public void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
     }
+
 
     @Test
     public void testHello() throws Exception {
