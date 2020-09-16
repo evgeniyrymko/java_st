@@ -1,39 +1,52 @@
 package by.rymko.controller;
 
-import by.rymko.configuration.SpringConfiguration;
+import by.rymko.dto.UserDto;
+import by.rymko.service.UserService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.util.Assert;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-//@ContextConfiguration(classes = SpringConfiguration.class)
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 
-    @Autowired
-    private ApplicationContext context;
+    private MockMvc mockMvc;
 
-//    private MockMvc mockMvc;
+    @Mock
+    private UserService userServiceMock;
 
-//    @Before
-//    public void setup() {
-//        DefaultMockMvcBuilder builder = MockMvcBuilders.webAppContextSetup(this.webApplicationContext);
-//        this.mockMvc = builder.build();
-//    }
+    @InjectMocks
+    private UserController userController;
+
+    @Before
+    public void setup() {
+    //    MockitoAnnotations.initMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+    }
+
 
     @Test
-    public void webContextNotNull() {
-        int amount = 0;
-        for (String beanDefinitionName : context.getBeanDefinitionNames()) {
-            System.out.println(beanDefinitionName);
-            amount++;
-        }
-        System.out.println(amount);
-        Assert.notNull(context);
+    public void shouldReturnUserById() throws Exception {
+        UserDto user = new UserDto(1, "Test Name", "Test Address");
+        Mockito.when(userServiceMock.findById(1)).thenReturn(user);
+        mockMvc.perform(get("/users/1"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.name").value("Test Name"))
+                .andExpect(jsonPath("$.address").value("Test Address"));
     }
+
 }

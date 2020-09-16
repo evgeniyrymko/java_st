@@ -16,10 +16,20 @@ public class UserService {
         UserDto user1 = new UserDto(1, "Ivan", "Grodno");
         UserDto user2 = new UserDto(2, "Petr", "Minsk");
         UserDto user3 = new UserDto(3, "Alexey", "Vitebsk");
-        usersList.addAll(Arrays.asList(user1, user2, user3));
+        UserDto user4 = new UserDto(4, "Andrey", "Schuchin");
+        UserDto user5 = new UserDto(5, "Max", "Lida");
+        usersList.addAll(Arrays.asList(user1, user2, user3, user4, user5));
     }
 
     public List<UserDto> findAll() {
         return usersList;
+    }
+
+    public UserDto findById(int userId) {
+        UserDto userById = null;
+        for (UserDto userDto : usersList) {
+            if (userDto.getId() == userId) userById = userDto;
+        }
+        return userById;
     }
 }

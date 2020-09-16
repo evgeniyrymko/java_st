@@ -4,6 +4,7 @@ import by.rymko.dto.UserDto;
 import by.rymko.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -21,5 +22,11 @@ public class UserController {
     @ResponseBody
     public List<UserDto> findAll() {
         return userService.findAll();
+    }
+
+    @GetMapping("/users/{userId}")
+    @ResponseBody
+    public UserDto findUserById(@PathVariable("userId") int userId) {
+        return userService.findById(userId);
     }
 }
