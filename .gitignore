@@ -1,12 +1,7 @@
 .idea/
-
-JavaCore/JavaCore.iml
-
-Topics/Design Patterns/out/
-
+out/
 target/
 
 *.iml
 *.info
-
 *.db.*
