@@ -1,0 +1,402 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Arlo HMSAPI example
+  description: A sample API that uses the Arlo HMSAPI to demonstrate features in the OpenAPI 3.0 specification
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: Arlo BE Team
+    email: support@arlo.com
+    url: 'http://arlo.com'
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  x-base-package: com.arlo.hms
+servers:
+  - url: 'https://hmsapi-eks-goldendev.arlocloud.com/hmsapi'
+    description: GoldenDev HMSAPI
+  - url: 'https://hmsapi-eks-goldenqa.arlocloud.com/hmsapi'
+    description: GoldenQA HMSAPI
+  - url: 'http://localhost:8090/hmsapi'
+    description: Local HMSAPI
+tags:
+  - name: UserProfileV6
+    description: User profile data
+  - name: Version
+    description: Version information
+  - name: MediaEvent
+    description: Controller that handles media events
+paths:
+  /version:
+    x-controller-name: VersionController
+    get:
+      tags:
+        - Version
+      description: Returns version information
+      operationId: getVersion
+      responses:
+        '200':
+          $ref: '#/components/responses/VersionInfoResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v6/users/profile:
+    x-controller-name: UserProfileV6Controller
+    parameters:
+      - $ref: '#/components/parameters/appId'
+      - $ref: '#/components/parameters/partnerId'
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/customerInitiated'
+    get:
+      tags:
+        - UserProfileV6
+      description: Gets user profile info
+      operationId: getUserProfile
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v6/users/passwordResetInfo:
+    x-controller-name: UserProfileV6Controller
+    parameters:
+      - $ref: '#/components/parameters/appId'
+      - $ref: '#/components/parameters/partnerId'
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/customerInitiated'
+    get:
+      tags:
+        - UserProfileV6
+      description: Gets reset password link
+      operationId: getResetPasswordLink
+      responses:
+        '200':
+          $ref: '#/components/responses/ResetPasswordResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v6/devices/media:
+    x-controller-name: MediaEventController
+    parameters:
+      - $ref: '#/components/parameters/appId'
+      - $ref: '#/components/parameters/partnerId'
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/customerInitiated'
+    get:
+      tags:
+        - MediaEvent
+      description: Fetches particular media events for user device
+      operationId: fetchEvents
+      responses:
+        '200':
+          $ref: '#/components/responses/MediaEventsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v6/devices/media/remove:
+    x-controller-name: MediaEventController
+    parameters:
+      - $ref: '#/components/parameters/appId'
+      - $ref: '#/components/parameters/partnerId'
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/customerInitiated'
+    post:
+      tags:
+        - MediaEvent
+      description: Remove particular media event for user
+      operationId: removeMedia
+      requestBody:
+        $ref: '#/components/requestBodies/RemoveMediaEventsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponseWithNoData'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    appId:
+      name: OAuth-App-Id
+      in: header
+      x-param-name: appId
+      description: application id
+      required: true
+      schema:
+        type: string
+      example: verisure
+    partnerId:
+      name: partnerId
+      in: header
+      description: partner id
+      x-validation-msg: partnerId must not be blank
+      required: true
+      schema:
+        type: string
+      example: verisure
+    userId:
+      name: OAuth-User-Id
+      in: header
+      x-param-name: userId
+      x-validation-msg: userId must not be blank
+      description: user id
+      required: true
+      schema:
+        type: string
+      example: DEV-203-158110742
+    customerInitiated:
+      name: customerInitiated
+      in: header
+      x-default-value: false
+      description: shows if request has been initiated by user
+      required: false
+      schema:
+        type: boolean
+  requestBodies:
+    RemoveMediaEventsRequest:
+      description: ''
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RemoveMediaEventsRequest'
+          example:
+            deviceList:
+              - deviceId: DEV-1000
+                groupId: arlo
+                groupIndex: 1
+              - deviceId: DEV-2000
+                groupId: arlo
+                groupIndex: 1
+    FetchMediaEventsRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FetchMediaEventsRequest'
+          example:
+            deviceList:
+              - deviceId: DEV-1000
+                groupId: arlo
+                groupIndex: 1
+              - deviceId: DEV-2000
+                groupId: arlo
+                groupIndex: 1
+  responses:
+    SuccessResponseWithNoData:
+      description: Success response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+          example:
+            success: true
+    VersionInfoResponse:
+      description: version information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VersionInfo'
+          example:
+            name: hmsapi
+            version: 2.30.0-master-SNAPSHOT.840
+    ResetPasswordResponse:
+      description: the user reset password link response
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Resource'
+              - type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ResetPasswordResponse'
+          example:
+            success: true
+            data:
+              passwordResetLink: 'https://hmsapi.com/reset-password-link-request-example'
+    UserProfileResponse:
+      description: the user profile response
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Resource'
+              - type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/UserProfileResponse'
+    MediaEventsResponse:
+      description: response entity
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/FetchMediaEventsResource'
+          example:
+            - contentUrl: 's3://aws.com/content/url/example.jpeg'
+              deviceId: DEV-1000
+              eventType: snapshotUpload
+              groupId: arlo
+              groupIndex: 1
+              timestamp: 1599834656105
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            userIsNotAuthorized:
+              summary: user id is not provided in request header
+              value:
+                success: false
+                data:
+                  code: 2002
+                  message: User is not authorized
+            partnerIsNotAuthorized:
+              summary: partner id is not provided in request header
+              value:
+                value:
+                  success: false
+                  data:
+                    code: 2002
+                    message: partnerId is not authorized
+    BadRequest:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            data:
+              code: 3001
+              message: unknown
+  schemas:
+    Resource:
+      x-ignore-processing: true
+      type: object
+      required:
+        - success
+      properties:
+        success:
+          type: boolean
+    ErrorResponse:
+      x-ignore-processing: true
+      type: object
+      required:
+        - success
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/RestErrorMessage'
+    RestErrorMessage:
+      type: object
+      description: This class is common class for REST API error response in JSON format for HMSAPI
+      x-sub-package: exception
+      required:
+        - code
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    VersionInfo:
+      type: object
+      description: Represents version information
+      x-sub-package: response
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        commitId:
+          type: string
+    FetchMediaEventsRequest:
+      type: object
+      description: POJO that represents fetch media events request
+      required:
+        - deviceList
+      properties:
+        deviceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceMediaEventsMetadata'
+    RemoveMediaEventsRequest:
+      type: object
+      description: POJO that represents remove media events request
+      required:
+        - deviceList
+      properties:
+        deviceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceMediaEventsMetadata'
+    DeviceMediaEventsMetadata:
+      x-sub-package: request
+      type: object
+      description: Contains metadata of device media events
+      required:
+        - deviceId
+        - groupId
+      properties:
+        deviceId:
+          $ref: '#/components/schemas/FetchMediaEventsResource/properties/deviceId'
+        groupId:
+          type: string
+        groupIndex:
+          type: integer
+          format: int32
+    UserProfileResponse:
+      type: 'object'
+      description: 'User Profile Response description'
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        language:
+          type: string
+        country:
+          type: string
+        partnerId:
+          type: string
+    ResetPasswordResponse:
+      type: 'object'
+      description: 'POJO for getting user reset password link,'
+      required:
+        - passwordResetLink
+      properties:
+        passwordResetLink:
+          type: string
+    FetchMediaEventsResource:
+      type: object
+      x-sub-package: response
+      description: Resource used in response of Fetch Media Events endpoint
+      properties:
+        contentUrl:
+          type: string
+        deviceId:
+          type: string
+        eventType:
+          type: string
+        groupId:
+          type: string
+        groupIndex:
+          type: integer
+          format: int32
+        timestamp:
+          type: integer
+          format: int64
