@@ -9,9 +9,12 @@ group = 'by.rymko'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+
 repositories {
     mavenCentral()
 }
+
+def generatedSourcesDir = "$buildDir/generated/openapi"
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -20,6 +23,8 @@ dependencies {
     }
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    compile group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.1'
+
 }
 
 test {
@@ -29,8 +34,8 @@ test {
 openApiGenerate {
     verbose = false
     validateSpec = true
-    generatorName = "java"
-    outputDir = "$buildDir/generated".toString()
+    generatorName = "spring"
+    outputDir = generatedSourcesDir.toString()
     inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
 //    inputSpec = "$rootDir/src/main/docs/hmsapi-openapi.yaml".toString()
     configFile = "$rootDir/openapi-generator-config.json".toString()
@@ -44,6 +49,22 @@ openApiGenerate {
     generateApiDocumentation = true
     logToStderr = false
 }
+
+sourceSets {
+    getByName("main") {
+        java {
+            srcDir("$generatedSourcesDir/src/main/java")
+        }
+    }
+}
+
+//tasks {
+//    def openApiGenerate by getting
+//
+//    def compileJava by getting {
+//        dependsOn(openApiGenerate)
+//    }
+//}
 
 openApiValidate {
     inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
