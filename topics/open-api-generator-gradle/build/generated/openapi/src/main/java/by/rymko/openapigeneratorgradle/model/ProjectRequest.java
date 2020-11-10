@@ -13,13 +13,16 @@ import javax.validation.constraints.*;
 /**
  * ProjectRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T16:24:24.211+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T19:53:38.376+03:00[Europe/Minsk]")
 
 public class ProjectRequest  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("name")
   private String name;
+
+  @JsonProperty("additionalName")
+  private String additionalName;
 
   public ProjectRequest name(String name) {
     this.name = name;
@@ -41,6 +44,26 @@ public class ProjectRequest  implements Serializable {
     this.name = name;
   }
 
+  public ProjectRequest additionalName(String additionalName) {
+    this.additionalName = additionalName;
+    return this;
+  }
+
+  /**
+   * the name of the project
+   * @return additionalName
+  */
+  @ApiModelProperty(example = "To-do Application Development", value = "the name of the project")
+
+
+  public String getAdditionalName() {
+    return additionalName;
+  }
+
+  public void setAdditionalName(String additionalName) {
+    this.additionalName = additionalName;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -51,12 +74,13 @@ public class ProjectRequest  implements Serializable {
       return false;
     }
     ProjectRequest projectRequest = (ProjectRequest) o;
-    return Objects.equals(this.name, projectRequest.name);
+    return Objects.equals(this.name, projectRequest.name) &&
+        Objects.equals(this.additionalName, projectRequest.additionalName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, additionalName);
   }
 
   @Override
@@ -65,6 +89,7 @@ public class ProjectRequest  implements Serializable {
     sb.append("class ProjectRequest {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    additionalName: ").append(toIndentedString(additionalName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

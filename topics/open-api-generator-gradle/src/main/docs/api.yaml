@@ -53,7 +53,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/ProjectRequest'
 
 
   /projects/{projectId}:
@@ -87,6 +87,10 @@ components:
       type: object
       properties:
         name:
+          type: string
+          description: the name of the project
+          example: To-do Application Development
+        additionalName:
           type: string
           description: the name of the project
           example: To-do Application Development

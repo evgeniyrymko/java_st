@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T16:24:24.211+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T19:53:38.376+03:00[Europe/Minsk]")
 
 @Validated
 @Api(value = "Projects", description = "the Projects API")
@@ -45,18 +45,18 @@ public interface ProjectsApi {
      * @param projectRequest  (required)
      * @return successfully created a project (status code 201)
      */
-    @ApiOperation(value = "", nickname = "createProject", notes = "create new project entry", response = ProjectResponse.class, tags={ "Projects", })
+    @ApiOperation(value = "", nickname = "createProject", notes = "create new project entry", response = ProjectRequest.class, tags={ "Projects", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "successfully created a project", response = ProjectResponse.class) })
+        @ApiResponse(code = 201, message = "successfully created a project", response = ProjectRequest.class) })
     @RequestMapping(value = "/projects",
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<ProjectResponse> createProject(@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProjectRequest projectRequest) {
+    default ResponseEntity<ProjectRequest> createProject(@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProjectRequest projectRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"To-do Application Development\", \"id\" : 1 }";
+                    String exampleString = "{ \"name\" : \"To-do Application Development\", \"additionalName\" : \"To-do Application Development\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
