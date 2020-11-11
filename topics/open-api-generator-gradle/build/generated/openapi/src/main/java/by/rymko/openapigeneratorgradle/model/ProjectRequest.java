@@ -9,11 +9,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import org.hibernate.validator.constraints.*;
 
 /**
  * ProjectRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T19:53:38.376+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-11T17:37:21.921+03:00[Europe/Minsk]")
 
 public class ProjectRequest  implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -24,6 +25,15 @@ public class ProjectRequest  implements Serializable {
   @JsonProperty("additionalName")
   private String additionalName;
 
+  @JsonProperty("email")
+  private String email;
+
+  @JsonProperty("testField1")
+  private String testField1;
+
+  @JsonProperty("testField2")
+  private String testField2;
+
   public ProjectRequest name(String name) {
     this.name = name;
     return this;
@@ -33,9 +43,10 @@ public class ProjectRequest  implements Serializable {
    * the name of the project
    * @return name
   */
-  @ApiModelProperty(example = "To-do Application Development", value = "the name of the project")
+  @ApiModelProperty(example = "To-do Application Development", required = true, value = "the name of the project")
+  @NotNull
 
-
+@Size(min=2,max=10) 
   public String getName() {
     return name;
   }
@@ -64,6 +75,66 @@ public class ProjectRequest  implements Serializable {
     this.additionalName = additionalName;
   }
 
+  public ProjectRequest email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Get email
+   * @return email
+  */
+  @ApiModelProperty(value = "")
+
+@javax.validation.constraints.Email
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public ProjectRequest testField1(String testField1) {
+    this.testField1 = testField1;
+    return this;
+  }
+
+  /**
+   * Get testField1
+   * @return testField1
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getTestField1() {
+    return testField1;
+  }
+
+  public void setTestField1(String testField1) {
+    this.testField1 = testField1;
+  }
+
+  public ProjectRequest testField2(String testField2) {
+    this.testField2 = testField2;
+    return this;
+  }
+
+  /**
+   * Get testField2
+   * @return testField2
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getTestField2() {
+    return testField2;
+  }
+
+  public void setTestField2(String testField2) {
+    this.testField2 = testField2;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -75,12 +146,15 @@ public class ProjectRequest  implements Serializable {
     }
     ProjectRequest projectRequest = (ProjectRequest) o;
     return Objects.equals(this.name, projectRequest.name) &&
-        Objects.equals(this.additionalName, projectRequest.additionalName);
+        Objects.equals(this.additionalName, projectRequest.additionalName) &&
+        Objects.equals(this.email, projectRequest.email) &&
+        Objects.equals(this.testField1, projectRequest.testField1) &&
+        Objects.equals(this.testField2, projectRequest.testField2);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, additionalName);
+    return Objects.hash(name, additionalName, email, testField1, testField2);
   }
 
   @Override
@@ -90,6 +164,9 @@ public class ProjectRequest  implements Serializable {
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalName: ").append(toIndentedString(additionalName)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    testField1: ").append(toIndentedString(testField1)).append("\n");
+    sb.append("    testField2: ").append(toIndentedString(testField2)).append("\n");
     sb.append("}");
     return sb.toString();
   }

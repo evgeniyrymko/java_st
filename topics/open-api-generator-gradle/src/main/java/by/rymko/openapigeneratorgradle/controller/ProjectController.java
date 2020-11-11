@@ -26,10 +26,9 @@ public class ProjectController implements ProjectsApi {
     }
 
     @Override
-    public ResponseEntity<ProjectRequest> createProject(@Valid ProjectRequest projectRequest) {
+    public ResponseEntity<ProjectRequest> createProject(String xRequestIDName, @Valid ProjectRequest projectRequest) {
         Project project = projectService.createProject(ProjectModelMapper.toEntity(projectRequest));
         return ResponseEntity.status(CREATED).body(projectRequest);
-
     }
 
     @Override

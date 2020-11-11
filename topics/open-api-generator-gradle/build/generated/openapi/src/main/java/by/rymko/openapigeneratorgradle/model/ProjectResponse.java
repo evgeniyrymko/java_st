@@ -9,11 +9,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import org.hibernate.validator.constraints.*;
 
 /**
  * ProjectResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T19:53:38.376+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-11T17:37:21.921+03:00[Europe/Minsk]")
 
 public class ProjectResponse  implements Serializable {
   private static final long serialVersionUID = 1L;

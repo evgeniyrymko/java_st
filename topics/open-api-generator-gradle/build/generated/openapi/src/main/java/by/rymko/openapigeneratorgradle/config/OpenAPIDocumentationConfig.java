@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.ServletContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T19:53:38.376+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-11T17:37:21.921+03:00[Europe/Minsk]")
 
 @Configuration
 @EnableSwagger2

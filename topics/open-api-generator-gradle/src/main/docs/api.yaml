@@ -41,6 +41,8 @@ paths:
       tags:
         - Projects
       description: create new project entry
+      parameters:
+        - $ref: '#/components/parameters/X-Request-ID'
       requestBody:
         required: true
         content:
@@ -88,12 +90,23 @@ components:
       properties:
         name:
           type: string
+          minLength: 2
+          maxLength: 10
           description: the name of the project
           example: To-do Application Development
         additionalName:
           type: string
           description: the name of the project
           example: To-do Application Development
+        email:
+          type: string
+          format: email
+        testField1:
+          type: string
+        testField2:
+          type: string
+      required:
+        - name
     ProjectResponse:
       type: object
       properties:
@@ -106,3 +119,12 @@ components:
           type: string
           description: the name of the project
           example: To-do Application Development
+  parameters:
+    X-Request-ID:
+      name: X-Request-ID-name
+      in: header
+      description: X-Request-ID description
+      required: true
+      schema:
+        type: string
+      example: "Example X-Request-ID"

@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-10T19:53:38.376+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-11T17:37:21.921+03:00[Europe/Minsk]")
 
 @Validated
 @Api(value = "Projects", description = "the Projects API")
@@ -42,6 +42,7 @@ public interface ProjectsApi {
      * POST /projects
      * create new project entry
      *
+     * @param xRequestIDName X-Request-ID description (required)
      * @param projectRequest  (required)
      * @return successfully created a project (status code 201)
      */
@@ -52,11 +53,11 @@ public interface ProjectsApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<ProjectRequest> createProject(@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProjectRequest projectRequest) {
+    default ResponseEntity<ProjectRequest> createProject(@ApiParam(value = "X-Request-ID description" ,required=true) @RequestHeader(value="X-Request-ID-name", required=true) String xRequestIDName,@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProjectRequest projectRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"To-do Application Development\", \"additionalName\" : \"To-do Application Development\" }";
+                    String exampleString = "{ \"testField2\" : \"testField2\", \"testField1\" : \"testField1\", \"name\" : \"To-do Application Development\", \"additionalName\" : \"To-do Application Development\", \"email\" : \"email\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
