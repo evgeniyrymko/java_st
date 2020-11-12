@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-11T17:37:21.921+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-11-12T16:07:16.106+03:00[Europe/Minsk]")
 
 @Validated
 @Api(value = "Projects", description = "the Projects API")
@@ -57,7 +57,7 @@ public interface ProjectsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"testField2\" : \"testField2\", \"testField1\" : \"testField1\", \"name\" : \"To-do Application Development\", \"additionalName\" : \"To-do Application Development\", \"email\" : \"email\" }";
+                    String exampleString = "{ \"date\" : \"2000-01-23\", \"testField2\" : \"testField2\", \"amount\" : 2, \"password\" : \"password\", \"testField1\" : \"testField1\", \"name\" : \"To-do Application Development\", \"additionalName\" : \"To-do Application Development\", \"uuid\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"email\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

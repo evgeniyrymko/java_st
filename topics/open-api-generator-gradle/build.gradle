@@ -24,7 +24,6 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
     compile group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.1'
-//    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.4.RELEASE'
     compile group: 'com.h2database', name: 'h2', version: '1.4.200'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.3.5.RELEASE'
@@ -42,7 +41,6 @@ openApiGenerate {
     generatorName = "spring"
     outputDir = generatedSourcesDir.toString()
     inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
-//    inputSpec = "$rootDir/src/main/docs/hmsapi-openapi.yaml".toString()
     configFile = "$rootDir/openapi-generator-config.json".toString()
     ignoreFileOverride = "$rootDir/.openapi-generator-ignore".toString()
     apiPackage = "by.rymko.openapigeneratorgradle.api"
@@ -53,19 +51,6 @@ openApiGenerate {
     generateApiTests = true
     generateApiDocumentation = true
     logToStderr = false
-//    useOptional = true
-//    async = true
-//    modelFilesConstrainedTo = [
-//            "ProjectRequest"
-//    ]
-//    apiFilesConstrainedTo = [
-//        "ProjectsApi", "ProjectsApiController", "ApiUtil"
-//    ]
-//    systemProperties = [
-//            apis           : "",
-//            models         : "",
-//            supportingFiles: ""
-//    ]
 }
 
 sourceSets {
@@ -75,14 +60,14 @@ sourceSets {
         }
     }
 }
-compileJava.dependsOn('openApiGenerate')
 
-//bootJar {
-//    mainClassName = 'by.rymko.openapigeneratorgradle.OpenApiGeneratorGradleApplication'
-//}
+bootJar {
+    mainClassName = 'by.rymko.openapigeneratorgradle.OpenApiGeneratorGradleApplication'
+}
+
+compileJava.dependsOn('openApiGenerate')
 
 openApiValidate {
     inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
-//    inputSpec = "$rootDir/src/main/docs/hmsapi-openapi.yaml".toString()
     recommend = true
 }

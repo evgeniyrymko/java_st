@@ -101,6 +101,19 @@ components:
         email:
           type: string
           format: email
+        amount:
+          type: integer
+          minimum: 1
+          maximum: 20
+        date:
+          type: string
+          format: date
+        password:
+          type: string
+          format: password
+        uuid:
+          type: string
+          format: uuid
         testField1:
           type: string
         testField2:
