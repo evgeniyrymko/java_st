@@ -29,6 +29,8 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.3.5.RELEASE'
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    testCompileOnly 'org.projectlombok:lombok:1.18.8'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
 
 test {

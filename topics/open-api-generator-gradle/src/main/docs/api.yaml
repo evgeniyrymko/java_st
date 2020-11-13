@@ -41,8 +41,8 @@ paths:
       tags:
         - Projects
       description: create new project entry
-      parameters:
-        - $ref: '#/components/parameters/X-Request-ID'
+#      parameters:
+#        - $ref: '#/components/parameters/X-Request-ID'
       requestBody:
         required: true
         content:
