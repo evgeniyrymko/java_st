@@ -43,6 +43,8 @@ paths:
       description: create new project entry
 #      parameters:
 #        - $ref: '#/components/parameters/X-Request-ID'
+#        - $ref: '#/components/parameters/X-Request-ProjectRequest'
+#        - $ref: '#/components/parameters/X-Request-Array'
       requestBody:
         required: true
         content:
@@ -101,23 +103,6 @@ components:
         email:
           type: string
           format: email
-        amount:
-          type: integer
-          minimum: 1
-          maximum: 20
-        date:
-          type: string
-          format: date
-        password:
-          type: string
-          format: password
-        uuid:
-          type: string
-          format: uuid
-        testField1:
-          type: string
-        testField2:
-          type: string
       required:
         - name
     ProjectResponse:
@@ -134,10 +119,28 @@ components:
           example: To-do Application Development
   parameters:
     X-Request-ID:
-      name: X-Request-ID-name
+      name: X-Request-ID
       in: header
       description: X-Request-ID description
       required: true
       schema:
         type: string
       example: "Example X-Request-ID"
+    X-Request-ProjectRequest:
+      name: X-Request-ProjectRequest
+      in: header
+      description: X-Request-ProjectRequest description
+      required: false
+      schema:
+        $ref: '#/components/schemas/ProjectRequest'
+      style: simple
+      explode: true
+    X-Request-Array:
+      name: X-Request-Array
+      in: header
+      description: X-Request-Array description
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer

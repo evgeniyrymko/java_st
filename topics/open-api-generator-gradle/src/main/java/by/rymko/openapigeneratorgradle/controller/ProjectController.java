@@ -6,6 +6,7 @@ import by.rymko.openapigeneratorgradle.mapper.ProjectModelMapper;
 import by.rymko.openapigeneratorgradle.model.ProjectRequest;
 import by.rymko.openapigeneratorgradle.model.ProjectResponse;
 import by.rymko.openapigeneratorgradle.service.ProjectService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -33,7 +34,12 @@ public class ProjectController implements ProjectsApi {
     @Override
     public ResponseEntity<ProjectRequest> createProject(@Valid ProjectRequest projectRequest) {
         Project project = projectService.createProject(ProjectModelMapper.toEntity(projectRequest));
-        return ResponseEntity.status(CREATED).body(projectRequest);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Response-String-Header1","String header1");
+        headers.add("X-Response-String-Header2","String header2");
+        return ResponseEntity.status(CREATED)
+                .headers(headers)
+                .body(projectRequest);
     }
 
     @Override
