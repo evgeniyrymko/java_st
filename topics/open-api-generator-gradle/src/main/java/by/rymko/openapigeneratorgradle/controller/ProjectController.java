@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static by.rymko.openapigeneratorgradle.mapper.ProjectModelMapper.toApi;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -35,8 +37,9 @@ public class ProjectController implements ProjectsApi {
     public ResponseEntity<ProjectRequest> createProject(@Valid ProjectRequest projectRequest) {
         Project project = projectService.createProject(ProjectModelMapper.toEntity(projectRequest));
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Response-String-Header1","String header1");
-        headers.add("X-Response-String-Header2","String header2");
+        headers.add("X-Response-String-Header1", "String header1");
+        headers.add("X-Response-String-Header2", "String header2");
+
         return ResponseEntity.status(CREATED)
                 .headers(headers)
                 .body(projectRequest);

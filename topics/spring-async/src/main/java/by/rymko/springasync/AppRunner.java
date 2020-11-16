@@ -26,7 +26,7 @@ public class AppRunner implements CommandLineRunner {
         CompletableFuture<User> user2 = gitHubLookupService.findUser("CloudFoundry");
         CompletableFuture<User> user3 = gitHubLookupService.findUser("Spring-Projects");
 
-        CompletableFuture.allOf(user1, user2, user3);
+        CompletableFuture.allOf(user1, user2, user3).join();
 
         LOG.info("Elapsed time: " + (System.currentTimeMillis() - startTime));
         LOG.info("-->" + user1.get());

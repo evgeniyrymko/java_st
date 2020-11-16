@@ -2,6 +2,7 @@ package by.rymko.openapigeneratorgradle.service;
 
 import by.rymko.openapigeneratorgradle.entity.Project;
 import by.rymko.openapigeneratorgradle.repository.ProjectRepository;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
