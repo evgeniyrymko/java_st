@@ -45,7 +45,7 @@ openApiGenerate {
     inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
     configFile = "$rootDir/openapi-generator-config.json".toString()
     ignoreFileOverride = "$rootDir/.openapi-generator-ignore".toString()
-    templateDir = "$rootDir/templates".toString()
+//    templateDir = "$rootDir/templates".toString()
     apiPackage = "by.rymko.openapigeneratorgradle.api"
     invokerPackage = "by.rymko.openapigeneratorgradle.invoker"
     modelPackage = "by.rymko.openapigeneratorgradle.model"

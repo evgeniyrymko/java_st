@@ -1,0 +1,26 @@
+X-Request-ID:
+  name: X-Request-ID
+  in: header
+  description: X-Request-ID description
+  required: true
+  schema:
+    type: string
+  example: "Example X-Request-ID"
+X-Request-ProjectRequest:
+  name: X-Request-ProjectRequest
+  in: header
+  description: X-Request-ProjectRequest description
+  required: false
+  schema:
+    $ref: 'schemas.yaml#/ProjectRequest'
+  style: simple
+  explode: true
+X-Request-Array:
+  name: X-Request-Array
+  in: header
+  description: X-Request-Array description
+  required: true
+  schema:
+    type: array
+    items:
+      type: integer

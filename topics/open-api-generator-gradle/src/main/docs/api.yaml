@@ -35,29 +35,29 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ProjectResponse'
+                  $ref: 'schemas.yaml#/ProjectResponse'
     post:
       operationId: createProject
       tags:
         - Projects
       description: create new project entry
       parameters:
-        - $ref: '#/components/parameters/X-Request-ID'
-        - $ref: '#/components/parameters/X-Request-ProjectRequest'
-        - $ref: '#/components/parameters/X-Request-Array'
+        - $ref: 'parameters.yaml#/X-Request-ID'
+        - $ref: 'parameters.yaml#/X-Request-ProjectRequest'
+        - $ref: 'parameters.yaml#/X-Request-Array'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProjectRequest'
+              $ref: 'schemas.yaml#/ProjectRequest'
       responses:
         201:
           description: successfully created a project
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectRequest'
+                $ref: 'schemas.yaml#/ProjectRequest'
 
 
   /projects/{projectId}:
@@ -83,69 +83,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
-
-components:
-  schemas:
-    ProjectRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          minLength: 2
-          maxLength: 10
-          description: the name of the project
-          example: To-do Application Development
-        additionalName:
-          type: string
-          description: the name of the project
-          example: To-do Application Development
-        email:
-          type: string
-          format: email
-      required:
-        - name
-    ProjectResponse:
-      type: object
-      x-java-jpa-entity: true
-      x-java-jpa-table: users
-      properties:
-        id:
-          type: integer
-          format: int64
-          x-java-jpa-annotations:
-            - "@Id"
-            - "@GeneratedValue(strategy = GenerationType.IDENTITY)"
-          description: unique id of the project for the identifier
-          example: 1
-        name:
-          type: string
-          description: the name of the project
-          example: To-do Application Development
-  parameters:
-    X-Request-ID:
-      name: X-Request-ID
-      in: header
-      description: X-Request-ID description
-      required: true
-      schema:
-        type: string
-      example: "Example X-Request-ID"
-    X-Request-ProjectRequest:
-      name: X-Request-ProjectRequest
-      in: header
-      description: X-Request-ProjectRequest description
-      required: false
-      schema:
-        $ref: '#/components/schemas/ProjectRequest'
-      style: simple
-      explode: true
-    X-Request-Array:
-      name: X-Request-Array
-      in: header
-      description: X-Request-Array description
-      required: true
-      schema:
-        type: array
-        items:
-          type: integer
+                $ref: 'schemas.yaml#/ProjectResponse'
