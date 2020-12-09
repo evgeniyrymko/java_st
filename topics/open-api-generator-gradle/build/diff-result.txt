@@ -1,1 +1,0 @@
-/home/rymko/repo/java-st/topics/open-api-generator-gradle/src/main/docs/api.yaml is larger and has a size 2532 bytes.
