@@ -32,21 +32,9 @@ public class ProjectController implements ProjectsApi {
     }
 
 
-    @Override
-    public ResponseEntity<ProjectRequest> createProject(String xRequestID, List<Integer> xRequestArray, @Valid ProjectRequest projectRequest,
-                                                        ProjectRequest xRequestProjectRequest) {
-        Project project = projectService.createProject(ProjectModelMapper.toEntity(projectRequest));
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Response-String-Header1", "String header1");
-        headers.add("X-Response-String-Header2", "String header2");
-
-        return ResponseEntity.status(CREATED)
-                .headers(headers)
-                .body(projectRequest);
-    }
-
 //    @Override
-//    public ResponseEntity<ProjectRequest> createProject(@Valid ProjectRequest projectRequest) {
+//    public ResponseEntity<ProjectRequest> createProject(String xRequestID, List<Integer> xRequestArray, @Valid ProjectRequest projectRequest,
+//                                                        ProjectRequest xRequestProjectRequest) {
 //        Project project = projectService.createProject(ProjectModelMapper.toEntity(projectRequest));
 //        HttpHeaders headers = new HttpHeaders();
 //        headers.add("X-Response-String-Header1", "String header1");
@@ -56,6 +44,18 @@ public class ProjectController implements ProjectsApi {
 //                .headers(headers)
 //                .body(projectRequest);
 //    }
+
+    @Override
+    public ResponseEntity<ProjectRequest> createProject(@Valid ProjectRequest projectRequest) {
+        Project project = projectService.createProject(ProjectModelMapper.toEntity(projectRequest));
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Response-String-Header1", "String header1");
+        headers.add("X-Response-String-Header2", "String header2");
+
+        return ResponseEntity.status(CREATED)
+                .headers(headers)
+                .body(projectRequest);
+    }
 
     @Override
     public ResponseEntity<ProjectResponse> getProjects(@Min(1L) Long projectId) {

@@ -56,29 +56,29 @@ openApiGenerate {
     logToStderr = false
 }
 
-task generateSpringSync(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
-    validateSpec = true
-    generatorName = "spring"
-    outputDir = generatedSourcesDir.toString()
-    inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
-    configFile = "$rootDir/openapi-generator-config.json".toString()
-    ignoreFileOverride = "$rootDir/.openapi-generator-ignore".toString()
-    apiPackage = "by.rymko.openapigeneratorgradle.apisync"
-    invokerPackage = "by.rymko.openapigeneratorgradle.invoker"
-    modelPackage = "by.rymko.openapigeneratorgradle.model"
-}
+//task generateSpringSync(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+//    validateSpec = true
+//    generatorName = "spring"
+//    outputDir = generatedSourcesDir.toString()
+//    inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
+//    configFile = "$rootDir/openapi-generator-config.json".toString()
+//    ignoreFileOverride = "$rootDir/.openapi-generator-ignore".toString()
+//    apiPackage = "by.rymko.openapigeneratorgradle.apisync"
+//    invokerPackage = "by.rymko.openapigeneratorgradle.invoker"
+//    modelPackage = "by.rymko.openapigeneratorgradle.model"
+//}
 
-task generateSpringAsync(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
-    validateSpec = true
-    generatorName = "spring"
-    outputDir = generatedSourcesDir.toString()
-    inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
-    configFile = "$rootDir/openapi-generator-config-async.json".toString()
-    ignoreFileOverride = "$rootDir/.openapi-generator-ignore".toString()
-    apiPackage = "by.rymko.openapigeneratorgradle.apiasync"
-    invokerPackage = "by.rymko.openapigeneratorgradle.invoker"
-    modelPackage = "by.rymko.openapigeneratorgradle.model"
-}
+//task generateSpringAsync(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+//    validateSpec = true
+//    generatorName = "spring"
+//    outputDir = generatedSourcesDir.toString()
+//    inputSpec = "$rootDir/src/main/docs/api.yaml".toString()
+//    configFile = "$rootDir/openapi-generator-config-async.json".toString()
+//    ignoreFileOverride = "$rootDir/.openapi-generator-ignore".toString()
+//    apiPackage = "by.rymko.openapigeneratorgradle.apiasync"
+//    invokerPackage = "by.rymko.openapigeneratorgradle.invoker"
+//    modelPackage = "by.rymko.openapigeneratorgradle.model"
+//}
 
 
 sourceSets {

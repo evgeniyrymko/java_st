@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-12-02T11:44:20.653+03:00[Europe/Minsk]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-12-22T11:47:41.812+03:00[Europe/Minsk]")
 
 @Validated
 @Api(value = "Projects", description = "the Projects API")
@@ -42,10 +42,7 @@ public interface ProjectsApi {
      * POST /projects
      * create new project entry
      *
-     * @param xRequestID X-Request-ID description (required)
-     * @param xRequestArray X-Request-Array description (required)
      * @param projectRequest  (required)
-     * @param xRequestProjectRequest X-Request-ProjectRequest description (optional)
      * @return successfully created a project (status code 201)
      */
     @ApiOperation(value = "", nickname = "createProject", notes = "create new project entry", response = ProjectRequest.class, tags={ "Projects", })
@@ -55,7 +52,7 @@ public interface ProjectsApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<ProjectRequest> createProject(@ApiParam(value = "X-Request-ID description" ,required=true) @RequestHeader(value="X-Request-ID", required=true) String xRequestID,@ApiParam(value = "X-Request-Array description" ,required=true) @RequestHeader(value="X-Request-Array", required=true) List<Integer> xRequestArray,@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProjectRequest projectRequest,@ApiParam(value = "X-Request-ProjectRequest description" ) @RequestHeader(value="X-Request-ProjectRequest", required=false) ProjectRequest xRequestProjectRequest) {
+    default ResponseEntity<ProjectRequest> createProject(@ApiParam(value = "" ,required=true )  @Valid @RequestBody ProjectRequest projectRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

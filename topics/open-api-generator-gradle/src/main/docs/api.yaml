@@ -41,10 +41,10 @@ paths:
       tags:
         - Projects
       description: create new project entry
-      parameters:
-        - $ref: 'parameters.yaml#/X-Request-ID'
-        - $ref: 'parameters.yaml#/X-Request-ProjectRequest'
-        - $ref: 'parameters.yaml#/X-Request-Array'
+#      parameters:
+#        - $ref: 'parameters.yaml#/X-Request-ID'
+#        - $ref: 'parameters.yaml#/X-Request-ProjectRequest'
+#        - $ref: 'parameters.yaml#/X-Request-Array'
       requestBody:
         required: true
         content:
